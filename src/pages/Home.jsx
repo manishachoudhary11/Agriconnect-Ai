@@ -11,21 +11,21 @@ function Home() {
       <Hero />
 
       <section className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <Card
-            title="Market Prices"
-            description="View latest crop prices from nearby markets."
-          />
+  title="Weather Intelligence"
+  description="Receive weather forecasts and farming alerts."
+/>
 
-          <Card
-         title="AI Crop Recommendation"
-         description="Get personalized crop suggestions using AI."
-        />
+<Card
+  title="AI Crop Recommendation"
+  description="Get personalized crop suggestions using AI."
+/>
 
-        <Card
-        title="Live Market Prices"
-        description="Track crop prices from nearby markets."
-        />
+<Card
+  title="Live Market Prices"
+  description="Track crop prices from nearby markets."
+/>
 
 <Card
   title="Buyer Marketplace"
