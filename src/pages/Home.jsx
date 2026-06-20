@@ -18,14 +18,19 @@ function Home() {
           />
 
           <Card
-            title="AI Assistant"
-            description="Get crop and farming recommendations."
-          />
+         title="AI Crop Recommendation"
+         description="Get personalized crop suggestions using AI."
+        />
 
-          <Card
-            title="Buyer Network"
-            description="Connect directly with verified buyers."
-          />
+        <Card
+        title="Live Market Prices"
+        description="Track crop prices from nearby markets."
+        />
+
+<Card
+  title="Buyer Marketplace"
+  description="Connect directly with verified buyers."
+/>
         </div>
       </section>
 
