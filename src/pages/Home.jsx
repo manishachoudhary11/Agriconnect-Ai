@@ -8,31 +8,37 @@ function Home() {
     <>
       <Navbar />
 
-      <Hero />
+      <main className="bg-white dark:bg-gray-900 dark:text-white transition-colors duration-300">
+        <Hero />
 
-      <section className="max-w-7xl mx-auto px-6 py-12">
-       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card
-  title="Weather Intelligence"
-  description="Receive weather forecasts and farming alerts."
-/>
+        <section className="max-w-7xl mx-auto px-6 py-12">
+          <h2 className="text-3xl font-bold text-center mb-10 text-green-700 dark:text-green-400">
+            Smart Farming Features
+          </h2>
 
-<Card
-  title="AI Crop Recommendation"
-  description="Get personalized crop suggestions using AI."
-/>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card
+              title="Weather Intelligence"
+              description="Receive weather forecasts and farming alerts."
+            />
 
-<Card
-  title="Live Market Prices"
-  description="Track crop prices from nearby markets."
-/>
+            <Card
+              title="AI Crop Recommendation"
+              description="Get personalized crop suggestions using AI."
+            />
 
-<Card
-  title="Buyer Marketplace"
-  description="Connect directly with verified buyers."
-/>
-        </div>
-      </section>
+            <Card
+              title="Live Market Prices"
+              description="Track crop prices from nearby markets."
+            />
+
+            <Card
+              title="Buyer Marketplace"
+              description="Connect directly with verified buyers."
+            />
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </>
