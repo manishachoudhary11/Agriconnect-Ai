@@ -1,11 +1,24 @@
 /**
  * Button Component
  * @param {string} text
+ * @param {function} onClick
  */
 
-function Button({ text }) {
+function Button({ text, onClick }) {
   return (
-    <button className="bg-green-600 text-white px-4 py-2 rounded">
+    <button
+      onClick={onClick}
+      className="
+        bg-green-600
+        hover:bg-green-700
+        text-white
+        px-6
+        py-3
+        rounded-xl
+        shadow-md
+        transition
+      "
+    >
       {text}
     </button>
   );

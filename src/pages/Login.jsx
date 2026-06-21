@@ -6,32 +6,36 @@ function Login() {
     <>
       <Navbar />
 
-      <main className="min-h-screen flex flex-col justify-center items-center px-6 bg-white dark:bg-gray-900 dark:text-white">
-        <h1 className="text-4xl font-bold text-green-700 dark:text-green-400">
-          Login
-        </h1>
+      <main className="min-h-screen bg-gray-100 flex justify-center items-center px-6">
 
-        <p className="mt-3 text-gray-600 dark:text-gray-300">
-          Secure access to AgriConnect AI.
-        </p>
+        <div className="bg-white p-10 rounded-2xl shadow-xl w-full max-w-md">
 
-        <form className="mt-6 w-full max-w-md bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+          <h1 className="text-4xl font-bold text-green-700 text-center">
+            Login
+          </h1>
+
+          <p className="text-center text-gray-500 mt-3">
+            Access your AgriConnect account
+          </p>
+
           <input
             type="email"
             placeholder="Email"
-            className="w-full border p-3 rounded mb-4 text-black"
+            className="w-full border p-4 rounded-lg mt-8"
           />
 
           <input
             type="password"
             placeholder="Password"
-            className="w-full border p-3 rounded mb-4 text-black"
+            className="w-full border p-4 rounded-lg mt-4"
           />
 
-          <button className="w-full bg-green-700 text-white py-3 rounded">
+          <button className="w-full bg-green-700 text-white py-4 rounded-lg mt-6">
             Login
           </button>
-        </form>
+
+        </div>
+
       </main>
 
       <Footer />

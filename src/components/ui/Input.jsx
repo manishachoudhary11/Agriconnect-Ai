@@ -6,8 +6,21 @@
 function Input({ placeholder }) {
   return (
     <input
+      type="text"
       placeholder={placeholder}
-      className="border p-2 rounded w-full"
+      className="
+        w-full
+        p-4
+        border
+        border-gray-300
+        rounded-xl
+        shadow-sm
+        focus:outline-none
+        focus:ring-2
+        focus:ring-green-500
+        focus:border-green-500
+        transition
+      "
     />
   );
 }

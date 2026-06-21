@@ -11,37 +11,62 @@ function ComponentsDemo() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="min-h-screen p-8 bg-white">
-      <h1 className="text-3xl font-bold mb-8">
-        UI Components Demo
-      </h1>
+    <div className="min-h-screen bg-gray-100 p-8">
+      <div className="max-w-6xl mx-auto">
 
-      <div className="space-y-6">
-        <Button
-          text="Open Modal"
-          onClick={() => setShowModal(true)}
-        />
+        <h1 className="text-5xl font-bold text-green-700 mb-10">
+          AgriConnect UI Library
+        </h1>
 
-        <Input placeholder="Enter crop name" />
+        <div className="grid md:grid-cols-2 gap-8">
 
-        <Toast message="Prediction Successful" />
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h2 className="font-bold text-xl mb-5">
+              Button
+            </h2>
 
-        <Loader />
+            <Button
+              text="Open Modal"
+              onClick={() => setShowModal(true)}
+            />
+          </div>
+
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h2 className="font-bold text-xl mb-5">
+              Input
+            </h2>
+
+            <Input placeholder="Enter crop name" />
+          </div>
+
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h2 className="font-bold text-xl mb-5">
+              Toast
+            </h2>
+
+            <Toast message="Prediction Successful" />
+          </div>
+
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h2 className="font-bold text-xl mb-5">
+              Loader
+            </h2>
+
+            <Loader />
+          </div>
+
+        </div>
 
         <Modal isOpen={showModal}>
-          <h2 className="text-xl font-bold mb-4">
+          <h2 className="text-2xl font-bold">
             AI Recommendation
           </h2>
 
-          <p>Rice is recommended for your soil.</p>
-
-          <button
-            className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
-            onClick={() => setShowModal(false)}
-          >
-            Close
-          </button>
+          <p className="mt-4">
+            Rice is recommended for your soil.
+          </p>
         </Modal>
+
       </div>
     </div>
   );

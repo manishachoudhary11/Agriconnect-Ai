@@ -4,8 +4,7 @@
 
 function Loader() {
   return (
-    <div className="animate-spin h-8 w-8 border-4 border-green-500 rounded-full">
-    </div>
+    <div className="w-12 h-12 border-4 border-green-600 border-t-transparent rounded-full animate-spin"></div>
   );
 }
 

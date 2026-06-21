@@ -6,29 +6,50 @@ function Dashboard() {
     <>
       <Navbar />
 
-      <main className="min-h-screen px-6 py-12 bg-white dark:bg-gray-900 dark:text-white">
-        <h1 className="text-4xl font-bold text-green-700 dark:text-green-400">
-          Farmer Dashboard
-        </h1>
+      <main className="min-h-screen bg-gray-100 px-6 py-12">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-5xl font-bold text-green-700">
+            Farmer Dashboard
+          </h1>
 
-        <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
-          Manage crops, monitor prices, and access AI tools.
-        </p>
+          <p className="text-gray-600 mt-4 text-lg">
+            Monitor crops, weather and AI recommendations.
+          </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-          <div className="bg-green-100 dark:bg-gray-800 p-6 rounded-lg shadow">
-            <h2 className="font-bold text-xl">Weather</h2>
-            <p>28°C • Sunny</p>
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
 
-          <div className="bg-green-100 dark:bg-gray-800 p-6 rounded-lg shadow">
-            <h2 className="font-bold text-xl">Market Prices</h2>
-            <p>Wheat: ₹2200/q</p>
-          </div>
+            <div className="bg-white p-6 rounded-2xl shadow-lg">
+              <h2 className="text-xl font-bold">🌤 Weather</h2>
+              <p className="mt-4 text-3xl font-bold">
+                28°C
+              </p>
+              <p>Sunny</p>
+            </div>
 
-          <div className="bg-green-100 dark:bg-gray-800 p-6 rounded-lg shadow">
-            <h2 className="font-bold text-xl">AI Suggestions</h2>
-            <p>Recommended Crop: Rice</p>
+            <div className="bg-white p-6 rounded-2xl shadow-lg">
+              <h2 className="text-xl font-bold">🌾 Wheat Price</h2>
+              <p className="mt-4 text-3xl font-bold">
+                ₹2200
+              </p>
+              <p>Per Quintal</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-lg">
+              <h2 className="text-xl font-bold">🤖 AI Suggestion</h2>
+              <p className="mt-4 text-3xl font-bold">
+                Rice
+              </p>
+              <p>Recommended Crop</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-lg">
+              <h2 className="text-xl font-bold">📈 Crop Health</h2>
+              <p className="mt-4 text-3xl font-bold">
+                85%
+              </p>
+              <p>Healthy</p>
+            </div>
+
           </div>
         </div>
       </main>
