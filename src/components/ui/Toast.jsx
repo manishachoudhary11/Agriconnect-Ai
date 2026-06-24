@@ -5,7 +5,7 @@
 
 function Toast({ message }) {
   return (
-    <div className="bg-green-500 text-white p-3 rounded">
+    <div className="bg-green-600 text-white p-4 rounded-xl shadow-lg">
       {message}
     </div>
   );

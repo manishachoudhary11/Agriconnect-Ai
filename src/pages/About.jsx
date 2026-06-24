@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-function About() {
+function About({ darkMode }) {
   return (
     <>
       <Navbar />

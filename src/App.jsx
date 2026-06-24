@@ -12,25 +12,44 @@ function App() {
 
   return (
     <div className={darkMode ? "dark" : ""}>
-      <div className="min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
+      <div className="min-h-screen transition-colors duration-300 bg-white text-black dark:bg-gray-900 dark:text-white">
         
-        {/* Theme Toggle Button */}
+        {/* Theme Toggle */}
         <div className="fixed top-4 right-4 z-50">
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="bg-green-600 text-white px-4 py-2 rounded shadow"
+            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-lg transition"
           >
-            {darkMode ? "☀ Light" : "🌙 Dark"}
+            {darkMode ? "🌙 Dark" : "☀ Light"}
           </button>
         </div>
 
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/components" element={<ComponentsDemo />} />
+            <Route
+              path="/"
+              element={<Home darkMode={darkMode} />}
+            />
+
+            <Route
+              path="/about"
+              element={<About darkMode={darkMode} />}
+            />
+
+            <Route
+              path="/dashboard"
+              element={<Dashboard darkMode={darkMode} />}
+            />
+
+            <Route
+              path="/login"
+              element={<Login darkMode={darkMode} />}
+            />
+
+            <Route
+              path="/components"
+              element={<ComponentsDemo darkMode={darkMode} />}
+            />
           </Routes>
         </BrowserRouter>
 

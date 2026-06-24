@@ -6,20 +6,17 @@
 function Input({ placeholder }) {
   return (
     <input
-      type="text"
       placeholder={placeholder}
       className="
         w-full
         p-4
-        border
-        border-gray-300
         rounded-xl
-        shadow-sm
-        focus:outline-none
-        focus:ring-2
-        focus:ring-green-500
+        border
+        border-gray-400
+        bg-transparent
+        text-inherit
+        outline-none
         focus:border-green-500
-        transition
       "
     />
   );
