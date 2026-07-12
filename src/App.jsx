@@ -1,60 +1,37 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import AppProviders from "./providers/AppProviders";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import ComponentsDemo from "./pages/ComponentsDemo";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-
   return (
-    <div className={darkMode ? "dark" : ""}>
-      <div className="min-h-screen transition-colors duration-300 bg-white text-black dark:bg-gray-900 dark:text-white">
-        
-        {/* Theme Toggle */}
-        <div className="fixed top-4 right-4 z-50">
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-lg transition"
-          >
-            {darkMode ? "🌙 Dark" : "☀ Light"}
-          </button>
-        </div>
-
+    <AppProviders>
+      <div className="min-h-screen bg-background text-foreground">
         <BrowserRouter>
           <Routes>
-            <Route
-              path="/"
-              element={<Home darkMode={darkMode} />}
-            />
-
-            <Route
-              path="/about"
-              element={<About darkMode={darkMode} />}
-            />
-
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route
               path="/dashboard"
-              element={<Dashboard darkMode={darkMode} />}
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
             />
-
-            <Route
-              path="/login"
-              element={<Login darkMode={darkMode} />}
-            />
-
-            <Route
-              path="/components"
-              element={<ComponentsDemo darkMode={darkMode} />}
-            />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/components" element={<ComponentsDemo />} />
           </Routes>
         </BrowserRouter>
-
       </div>
-    </div>
+    </AppProviders>
   );
 }
 

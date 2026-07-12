@@ -1,11 +1,7 @@
-/**
- * Toast Component
- * @param {string} message
- */
-
+/** @deprecated Use useToast() from ToastContext instead */
 function Toast({ message }) {
   return (
-    <div className="bg-green-600 text-white p-4 rounded-xl shadow-lg">
+    <div className="rounded-xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-lg">
       {message}
     </div>
   );

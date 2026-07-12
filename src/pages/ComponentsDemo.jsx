@@ -1,140 +1,136 @@
 import { useState } from "react";
+import { HiInbox } from "react-icons/hi";
+import Navbar from "../components/Navbar";
 import {
+  Badge,
   Button,
+  Card,
+  EmptyState,
   Input,
-  Modal,
-  Toast,
   Loader,
+  Modal,
+  Skeleton,
+  SkeletonCard,
 } from "../components/ui";
+import { useToast } from "../context/ToastContext";
 
-function ComponentsDemo({ darkMode }) {
+export default function ComponentsDemo() {
   const [showModal, setShowModal] = useState(false);
+  const { toast } = useToast();
 
   return (
-    <div
-      className={`min-h-screen flex justify-center py-10 px-4 transition-all duration-300 ${
-        darkMode
-          ? "bg-slate-950 text-white"
-          : "bg-gray-100 text-black"
-      }`}
-    >
-      <div
-        className={`w-full max-w-md rounded-3xl p-8 shadow-2xl ${
-          darkMode
-            ? "bg-slate-900"
-            : "bg-white"
-        }`}
-      >
-        <div className="flex justify-between items-start mb-8">
-          <h1 className="text-4xl font-bold">
-            UI Component
-            <br />
-            Showcase
-          </h1>
+    <>
+      <Navbar />
 
-          <div
-  className={`px-4 py-2 rounded-xl ${
-    darkMode
-      ? "bg-gray-700 text-white"
-      : "bg-gray-200 text-black"
-  }`}
->
-  {darkMode ? "🌙 Dark" : "☀ Light"}
-</div>
-        </div>
-
-        {/* Buttons */}
-        <div className="grid grid-cols-2 gap-4 mb-8">
-          <button className="bg-green-600 text-white py-3 rounded-xl font-semibold">
-            Primary
-          </button>
-
-          <button className="bg-gray-600 text-white py-3 rounded-xl font-semibold">
-            Secondary
-          </button>
-
-          <button className="border-2 border-green-600 text-green-600 py-3 rounded-xl font-semibold">
-            Outline
-          </button>
-
-          <button className="bg-green-800 text-green-300 py-3 rounded-xl font-semibold opacity-70">
-            Disabled
-          </button>
-        </div>
-
-        {/* Email */}
-        <div className="mb-6">
-         <label
-  className={`block mb-2 ${
-    darkMode ? "text-gray-300" : "text-gray-600"
-  }`}
->
-            Email Address
-          </label>
-
-          <Input placeholder="Enter your email" />
-        </div>
-
-        {/* Password */}
-        <div className="mb-6">
-         <label
-  className={`block mb-2 ${
-    darkMode ? "text-gray-300" : "text-gray-600"
-  }`}
->   
-            Password
-          </label>
-
-          <input
-            type="password"
-            placeholder="Enter password"
-            className="w-full p-4 rounded-xl border border-red-500 bg-transparent"
-          />
-
-          <p className="text-red-500 text-sm mt-2">
-            Password is required
-          </p>
-        </div>
-
-        {/* Loader */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">
-            Loader Component
-          </h2>
-
-          <Loader />
-        </div>
-
-        {/* Toast */}
-        <div className="mb-8">
-          <Toast message="Prediction Successful" />
-        </div>
-
-        {/* Modal */}
-        <Button
-          text="Open Modal"
-          onClick={() => setShowModal(true)}
-        />
-
-        <Modal isOpen={showModal}>
-          <h2 className="text-2xl font-bold mb-4 text-black">
-            AI Recommendation
-          </h2>
-
-          <p className="text-black">
-            Rice is recommended for your soil.
+      <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
+        <div className="animate-fade-in">
+          <Badge variant="info">Design System</Badge>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight">UI Component Library</h1>
+          <p className="mt-2 text-muted-foreground">
+            Production-ready components for AgriConnect AI 2.0
           </p>
 
-          <button
-            onClick={() => setShowModal(false)}
-            className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
-          >
-            Close
-          </button>
-        </Modal>
-      </div>
-    </div>
+          <div className="mt-10 space-y-10">
+            <Card title="Buttons">
+              <div className="flex flex-wrap gap-3">
+                <Button>Primary</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="outline">Outline</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="destructive">Destructive</Button>
+                <Button isLoading>Loading</Button>
+              </div>
+            </Card>
+
+            <Card title="Form Inputs">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Input label="Email" placeholder="you@example.com" />
+                <Input
+                  label="Password"
+                  type="password"
+                  placeholder="Enter password"
+                  error="Password is required"
+                />
+              </div>
+            </Card>
+
+            <Card title="Badges">
+              <div className="flex flex-wrap gap-2">
+                <Badge>Default</Badge>
+                <Badge variant="success">Success</Badge>
+                <Badge variant="warning">Warning</Badge>
+                <Badge variant="danger">Danger</Badge>
+                <Badge variant="info">Info</Badge>
+                <Badge variant="primary">Primary</Badge>
+              </div>
+            </Card>
+
+            <Card title="Loading States">
+              <div className="flex flex-wrap items-center gap-8">
+                <Loader />
+                <Loader size="sm" />
+                <Loader size="lg" />
+              </div>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <SkeletonCard />
+                <div className="space-y-3">
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-4 w-1/2" />
+                </div>
+              </div>
+            </Card>
+
+            <Card title="Empty State">
+              <EmptyState
+                icon={HiInbox}
+                title="No crops found"
+                description="Get started by adding your first crop to the dashboard."
+                actionLabel="Add crop"
+                onAction={() => toast("Crop form coming soon", "info")}
+              />
+            </Card>
+
+            <Card title="Toast Notifications">
+              <div className="flex flex-wrap gap-3">
+                <Button onClick={() => toast("Changes saved successfully", "success")}>
+                  Success
+                </Button>
+                <Button variant="destructive" onClick={() => toast("Something went wrong", "error")}>
+                  Error
+                </Button>
+                <Button variant="outline" onClick={() => toast("New update available", "info")}>
+                  Info
+                </Button>
+                <Button variant="secondary" onClick={() => toast("Check your inputs", "warning")}>
+                  Warning
+                </Button>
+              </div>
+            </Card>
+
+            <Card title="Modal">
+              <Button onClick={() => setShowModal(true)}>Open Modal</Button>
+              <Modal
+                isOpen={showModal}
+                onClose={() => setShowModal(false)}
+                title="AI Recommendation"
+                description="Based on your soil and weather data"
+              >
+                <p className="text-sm text-muted-foreground">
+                  Rice is recommended for your current conditions. Expected yield
+                  increase of 12% compared to last season.
+                </p>
+                <div className="mt-6 flex justify-end gap-3">
+                  <Button variant="outline" onClick={() => setShowModal(false)}>
+                    Dismiss
+                  </Button>
+                  <Button onClick={() => setShowModal(false)}>Apply</Button>
+                </div>
+              </Modal>
+            </Card>
+          </div>
+        </div>
+      </main>
+    </>
   );
 }
-
-export default ComponentsDemo;

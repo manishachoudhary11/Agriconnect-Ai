@@ -1,129 +1,161 @@
 import { useEffect, useState } from "react";
+import { HiCloud, HiSparkles, HiTrendingUp } from "react-icons/hi";
+import api from "../lib/api";
+import { formatCurrency } from "../lib/utils";
+import Navbar from "../components/Navbar";
+import { Badge, Card, EmptyState, Loader, SkeletonCard } from "../components/ui";
 
-function Dashboard() {
+export default function Dashboard() {
   const [crops, setCrops] = useState([]);
+  const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  // ✅ fallback data (so UI NEVER looks empty)
-  const fallbackCrops = [
-    {
-      id: 1,
-      name: "Wheat",
-      location: "Nashik",
-      market_price: 2450,
-      quantity: "500 kg",
-    },
-    {
-      id: 2,
-      name: "Rice",
-      location: "Pune",
-      market_price: 3200,
-      quantity: "700 kg",
-    },
-    {
-      id: 3,
-      name: "Maize",
-      location: "Nagpur",
-      market_price: 2100,
-      quantity: "300 kg",
-    },
-  ];
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/crops")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("API DATA:", data);
-
-        const apiData = Array.isArray(data)
-          ? data
-          : data?.data;
-
-        // if API fails → fallback used
-        if (apiData && apiData.length > 0) {
-          setCrops(apiData);
-        } else {
-          setCrops(fallbackCrops);
-        }
-
+    async function loadDashboard() {
+      try {
+        const [cropsRes, statsRes] = await Promise.all([
+          api.get("/api/crops"),
+          api.get("/api/dashboard"),
+        ]);
+        setCrops(cropsRes.data);
+        setStats(statsRes.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
         setLoading(false);
-      })
-      .catch(() => {
-        setCrops(fallbackCrops);
-        setLoading(false);
-      });
+      }
+    }
+
+    loadDashboard();
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <>
+      <Navbar />
 
-      {/* HEADER */}
-      <h1 className="text-4xl font-bold text-green-700">
-        🌾 Farmer Dashboard
-      </h1>
-      <p className="text-gray-600 mt-2">
-        Monitor crops, weather and AI recommendations.
-      </p>
-
-      {/* GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
-
-        {/* WEATHER */}
-        <div className="bg-white p-5 rounded-xl shadow">
-          <h2 className="font-semibold text-gray-700">🌤 Weather</h2>
-          <p className="text-3xl mt-3">28°C</p>
-          <p className="text-gray-500">Sunny</p>
-        </div>
-
-        {/* CROPS BOX (MAIN FIX) */}
-        <div className="bg-white p-5 rounded-xl shadow md:col-span-2">
-          <h2 className="font-semibold text-gray-700 mb-4">
-            🌾 Crop Market Prices
-          </h2>
+      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="animate-fade-in">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <Badge variant="primary">Dashboard</Badge>
+              <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                Farmer Dashboard
+              </h1>
+              <p className="mt-2 text-muted-foreground">
+                Monitor crops, weather, and AI recommendations in one place.
+              </p>
+            </div>
+          </div>
 
           {loading ? (
-            <p className="text-blue-500">Loading crops...</p>
-          ) : (
-            <div className="space-y-4">
-              {crops.map((crop) => (
-                <div
-                  key={crop.id}
-                  className="border rounded-lg p-4 bg-gray-50"
-                >
-                  <p className="text-lg font-bold text-green-700">
-                    {crop.name}
-                  </p>
-
-                  <div className="text-sm text-gray-700 mt-2 space-y-1">
-                    <p>📍 Location: {crop.location}</p>
-                    <p>💰 Price: ₹{crop.market_price}</p>
-                    <p>📦 Quantity: {crop.quantity}</p>
-                  </div>
-                </div>
+            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <SkeletonCard key={i} />
               ))}
+            </div>
+          ) : error ? (
+            <div className="mt-8">
+              <EmptyState
+                icon={HiCloud}
+                title="Unable to load dashboard"
+                description={error}
+              />
+            </div>
+          ) : (
+            <>
+              <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <Card title="Total Crops" padding>
+                  <p className="text-3xl font-bold">{stats?.total_crops ?? 0}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Active crop records</p>
+                </Card>
+                <Card title="Total Quantity" padding>
+                  <p className="text-3xl font-bold">{stats?.total_quantity ?? 0}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Units across all crops</p>
+                </Card>
+                <Card title="Avg. Market Price" padding>
+                  <p className="text-3xl font-bold">
+                    {formatCurrency(stats?.average_market_price ?? 0)}
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">Per unit average</p>
+                </Card>
+                <Card title="Crop Health" padding>
+                  <p className="text-3xl font-bold text-success">85%</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Overall health score</p>
+                </Card>
+              </div>
+
+              <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+                <Card
+                  className="lg:col-span-2"
+                  title="Crop Market Prices"
+                  description="Live prices from your registered crops"
+                >
+                  {crops.length === 0 ? (
+                    <EmptyState
+                      icon={HiTrendingUp}
+                      title="No crops yet"
+                      description="Add your first crop to start tracking market prices."
+                    />
+                  ) : (
+                    <div className="space-y-3">
+                      {crops.map((crop) => (
+                        <div
+                          key={crop.id}
+                          className="flex flex-col gap-2 rounded-xl border border-border bg-muted/30 p-4 sm:flex-row sm:items-center sm:justify-between"
+                        >
+                          <div>
+                            <p className="font-semibold">{crop.name}</p>
+                            <p className="text-sm text-muted-foreground">{crop.location}</p>
+                          </div>
+                          <div className="flex items-center gap-4 text-sm">
+                            <span>{crop.quantity} units</span>
+                            <Badge variant="success">{formatCurrency(crop.market_price)}</Badge>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </Card>
+
+                <div className="space-y-6">
+                  <Card title="Weather" description="Current conditions">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent">
+                        <HiCloud className="h-7 w-7 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-3xl font-bold">28°C</p>
+                        <p className="text-sm text-muted-foreground">Sunny · Nashik</p>
+                      </div>
+                    </div>
+                  </Card>
+
+                  <Card title="AI Insight" description="Today's recommendation">
+                    <div className="flex items-start gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent">
+                        <HiSparkles className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-semibold">Rice</p>
+                        <p className="text-sm text-muted-foreground">
+                          Best performing crop in your portfolio today.
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              </div>
+            </>
+          )}
+
+          {loading && (
+            <div className="mt-8 flex justify-center">
+              <Loader label="Loading dashboard data" />
             </div>
           )}
         </div>
-
-        {/* AI BOX */}
-        <div className="bg-white p-5 rounded-xl shadow">
-          <h2 className="font-semibold text-gray-700">🤖 AI Insight</h2>
-          <p className="text-xl mt-3 font-bold text-purple-600">
-            Rice
-          </p>
-          <p className="text-gray-500">Best selling crop today</p>
-        </div>
-
-        {/* HEALTH BOX */}
-        <div className="bg-white p-5 rounded-xl shadow">
-          <h2 className="font-semibold text-gray-700">📈 Crop Health</h2>
-          <p className="text-3xl mt-3">85%</p>
-          <p className="text-green-600">Healthy</p>
-        </div>
-
-      </div>
-    </div>
+      </main>
+    </>
   );
 }
-
-export default Dashboard;

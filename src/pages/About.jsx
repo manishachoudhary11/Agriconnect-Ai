@@ -1,75 +1,74 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Badge, Card } from "../components/ui";
 
-function About({ darkMode }) {
+const stack = [
+  { title: "Frontend", value: "React + Vite + Tailwind CSS" },
+  { title: "Backend", value: "FastAPI + SQLAlchemy" },
+  { title: "Database", value: "PostgreSQL" },
+];
+
+const features = [
+  "AI-based crop recommendation system",
+  "Real-time market price updates",
+  "Weather intelligence and farming alerts",
+  "Farmer and buyer marketplace",
+  "Agricultural news and guidance",
+  "Smart decision support for farmers",
+];
+
+export default function About() {
   return (
     <>
       <Navbar />
 
-      <main className="min-h-screen px-6 py-12 bg-green-50 dark:bg-gray-900 dark:text-white transition-colors duration-300">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-green-700 dark:text-green-400">
+      <main className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="animate-fade-in">
+          <Badge variant="primary">About</Badge>
+          <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
             About AgriConnect AI
           </h1>
-
-          <p className="mt-6 text-lg text-gray-700 dark:text-gray-300">
-            AgriConnect AI is an AI-Powered Agricultural Coordination and
-            Market Information Platform designed to help farmers make
-            data-driven decisions. Our platform bridges the gap between
-            farmers, buyers, and agricultural experts by providing
-            intelligent insights and real-time information.
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            AgriConnect AI is an AI-powered agricultural coordination and market
+            information platform designed to help farmers make data-driven decisions.
+            Our platform bridges the gap between farmers, buyers, and agricultural
+            experts by providing intelligent insights and real-time information.
           </p>
 
-          <h2 className="text-2xl font-bold text-green-700 dark:text-green-400 mt-10">
-            Our Mission
-          </h2>
+          <section className="mt-12">
+            <h2 className="text-2xl font-bold">Our Mission</h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              To empower farmers with technology, improve agricultural productivity,
+              and create a transparent marketplace where farmers can directly connect
+              with buyers and access valuable farming resources.
+            </p>
+          </section>
 
-          <p className="mt-3 text-gray-700 dark:text-gray-300">
-            To empower farmers with technology, improve agricultural
-            productivity, and create a transparent marketplace where
-            farmers can directly connect with buyers and access
-            valuable farming resources.
-          </p>
+          <section className="mt-12">
+            <h2 className="text-2xl font-bold">Key Features</h2>
+            <ul className="mt-4 space-y-3">
+              {features.map((feature) => (
+                <li
+                  key={feature}
+                  className="flex items-start gap-3 text-muted-foreground"
+                >
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </section>
 
-          <h2 className="text-2xl font-bold text-green-700 dark:text-green-400 mt-10">
-            Key Features
-          </h2>
-
-          <ul className="mt-4 space-y-3 text-gray-700 dark:text-gray-300 list-disc pl-6">
-            <li>AI-based Crop Recommendation System</li>
-            <li>Real-Time Market Price Updates</li>
-            <li>Weather Intelligence and Farming Alerts</li>
-            <li>Farmer & Buyer Marketplace</li>
-            <li>Agricultural News and Guidance</li>
-            <li>Smart Decision Support for Farmers</li>
-          </ul>
-
-          <h2 className="text-2xl font-bold text-green-700 dark:text-green-400 mt-10">
-            Technology Stack
-          </h2>
-
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-              <h3 className="font-bold text-lg">Frontend</h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                React + Tailwind CSS
-              </p>
+          <section className="mt-12">
+            <h2 className="text-2xl font-bold">Technology Stack</h2>
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {stack.map((item) => (
+                <Card key={item.title} title={item.title}>
+                  <p className="text-sm text-muted-foreground">{item.value}</p>
+                </Card>
+              ))}
             </div>
-
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-              <h3 className="font-bold text-lg">Backend</h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                FastAPI (Python)
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-              <h3 className="font-bold text-lg">Database</h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                PostgreSQL (Supabase)
-              </p>
-            </div>
-          </div>
+          </section>
         </div>
       </main>
 
@@ -77,5 +76,3 @@ function About({ darkMode }) {
     </>
   );
 }
-
-export default About;
