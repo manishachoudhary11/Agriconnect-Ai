@@ -7,3 +7,4 @@ export { default as Badge } from "./Badge";
 export { default as Card } from "./Card";
 export { default as EmptyState } from "./EmptyState";
 export { Skeleton, SkeletonCard, SkeletonTable } from "./Skeleton";
+export { default as Accordion } from "./Accordion";
