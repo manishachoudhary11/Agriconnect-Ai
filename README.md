@@ -323,10 +323,3 @@ This project is developed for learning, portfolio, and educational purposes.
 
 ---
 
-<div align="center">
-
-### ⭐ If you like this project, consider giving it a star!
-
-**Made with ❤️ using React + FastAPI + AI**
-
-</div>
