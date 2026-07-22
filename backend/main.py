@@ -12,8 +12,8 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="AgriConnect AI API",
-    description="Production API for AgriConnect AI 2.0",
-    version="2.0.0",
+    description="Production API for AgriConnect AI",
+    version="1.0.0",
 )
 
 app.add_middleware(

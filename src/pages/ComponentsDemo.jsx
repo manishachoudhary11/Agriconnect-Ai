@@ -27,7 +27,7 @@ export default function ComponentsDemo() {
           <Badge variant="info">Design System</Badge>
           <h1 className="mt-4 text-3xl font-bold tracking-tight">UI Component Library</h1>
           <p className="mt-2 text-muted-foreground">
-            Production-ready components for AgriConnect AI 2.0
+            Production-ready components for AgriConnect AI
           </p>
 
           <div className="mt-10 space-y-10">

@@ -74,7 +74,7 @@ export default function AIAssistant() {
       {
         id: "welcome",
         role: "assistant",
-        content: `Hello **${user?.full_name || "Farmer"}**! I am your **AgriConnect AI 2.0 Assistant**. Ask me anything about crop management, disease diagnosis, weather-based irrigation, or market trends!`,
+        content: `Hello **${user?.full_name || "Farmer"}**! I am your **AgriConnect AI Assistant**. Ask me anything about crop management, disease diagnosis, weather-based irrigation, or market trends!`,
       },
     ]);
   };

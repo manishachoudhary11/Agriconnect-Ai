@@ -93,8 +93,8 @@ export default function Dashboard() {
           recent_activity: [
             {
               id: "act-1",
-              title: "Welcome to AgriConnect AI 2.0",
-              description: "Your AI-powered farm management system is active in Demo/Local mode.",
+              title: "Welcome to AgriConnect AI",
+              description: "Your AI-powered farm management system is active.",
               timestamp: "Just now",
               type: "system",
             },
@@ -130,7 +130,7 @@ export default function Dashboard() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-border pb-6">
             <div>
               <div className="flex items-center gap-2">
-                <Badge variant="primary">AgriConnect AI 2.0</Badge>
+                <Badge variant="primary">AgriConnect AI</Badge>
                 {data?.unread_notifications > 0 && (
                   <Badge variant="warning" className="flex items-center gap-1">
                     <HiBell className="h-3 w-3" /> {data.unread_notifications} Alerts

@@ -117,7 +117,7 @@ def get_dashboard(
         recent_activity = [
             {
                 "id": "act-1",
-                "title": "Welcome to AgriConnect AI 2.0",
+                "title": "Welcome to AgriConnect AI",
                 "description": "Your AI-powered farm management system is ready.",
                 "timestamp": "Just now",
                 "type": "system",

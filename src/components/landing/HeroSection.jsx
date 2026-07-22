@@ -25,7 +25,7 @@ export default function HeroSection() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="animate-slide-up">
             <Badge variant="primary" className="mb-6">
-              AgriConnect AI 2.0 — Smart Agriculture Platform
+              AgriConnect AI — Smart Agriculture Platform
             </Badge>
             <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               Smart farming,
