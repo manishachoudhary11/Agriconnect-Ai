@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: agriconnect_db
+    environment:
+      POSTGRES_USER: agriconnect
+      POSTGRES_PASSWORD: agriconnect_password
+      POSTGRES_DB: agriconnect_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agriconnect -d agriconnect_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: agriconnect_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://agriconnect:agriconnect_password@postgres:5432/agriconnect_db
+      - JWT_SECRET=super_secret_jwt_token_key_agriconnect_2_0
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agriconnect_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

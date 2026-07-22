@@ -64,6 +64,25 @@ def create_listing(
     return _listing_response(listing, db)
 
 
+@router.put("/listings/{listing_id}", response_model=ListingResponse)
+def update_listing(
+    listing_id: int,
+    payload: ListingCreate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_roles("farmer", "admin")),
+):
+    listing = db.query(Listing).filter(Listing.id == listing_id, Listing.seller_id == current_user.id).first()
+    if not listing:
+        raise HTTPException(status_code=404, detail="Listing not found")
+
+    for key, value in payload.model_dump().items():
+        setattr(listing, key, value)
+
+    db.commit()
+    db.refresh(listing)
+    return _listing_response(listing, db)
+
+
 @router.delete("/listings/{listing_id}")
 def delete_listing(
     listing_id: int,

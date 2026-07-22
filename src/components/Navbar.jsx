@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { HiLogout, HiMenu, HiUser, HiX } from "react-icons/hi";
+import { HiLogout, HiMenu, HiUser, HiX, HiBell } from "react-icons/hi";
 import { cn } from "../lib/utils";
 import { useAuth } from "../context/AuthContext";
 import ThemeToggle from "./ThemeToggle";
@@ -11,6 +11,12 @@ const navLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/dashboard", label: "Dashboard" },
+  { to: "/crops", label: "Crops" },
+  { to: "/marketplace", label: "Marketplace" },
+  { to: "/ai-assistant", label: "AI Assistant" },
+  { to: "/disease-detection", label: "Disease Scan" },
+  { to: "/weather", label: "Weather" },
+  { to: "/price-prediction", label: "Price Predict" },
 ];
 
 function NavItem({ to, label, onClick }) {
@@ -65,15 +71,25 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
 
+          {isAuthenticated && (
+            <Link
+              to="/notifications"
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition"
+              title="Notifications"
+            >
+              <HiBell className="h-5 w-5" />
+            </Link>
+          )}
+
           {!loading && isAuthenticated ? (
             <div className="hidden items-center gap-3 sm:flex">
-              <div className="flex items-center gap-2 rounded-lg border border-border px-3 py-1.5">
-                <HiUser className="h-4 w-4 text-muted-foreground" />
+              <Link to="/profile" className="flex items-center gap-2 rounded-lg border border-border px-3 py-1.5 hover:bg-muted transition">
+                <HiUser className="h-4 w-4 text-emerald-500" />
                 <span className="text-sm font-medium">{user?.full_name}</span>
                 <Badge variant="primary" className="capitalize">
                   {user?.role}
                 </Badge>
-              </div>
+              </Link>
               <Button variant="outline" size="sm" onClick={handleLogout}>
                 <HiLogout className="h-4 w-4" />
                 Sign out

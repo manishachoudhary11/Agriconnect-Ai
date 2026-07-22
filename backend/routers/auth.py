@@ -57,3 +57,39 @@ def login(payload: UserLogin, db: Session = Depends(get_db)):
 @router.get("/me", response_model=UserResponse)
 def get_me(current_user: User = Depends(get_current_user)):
     return current_user
+
+
+@router.put("/profile", response_model=UserResponse)
+def update_profile(
+    payload: dict,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    user = db.query(User).filter(User.id == current_user.id).first()
+    for field in ["full_name", "phone", "location", "bio", "avatar_url"]:
+        if field in payload:
+            setattr(user, field, payload[field])
+    db.commit()
+    db.refresh(user)
+    return user
+
+
+@router.post("/change-password")
+def change_password(
+    payload: dict,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    current_pwd = payload.get("current_password")
+    new_pwd = payload.get("new_password")
+
+    if not current_pwd or not new_pwd:
+        raise HTTPException(status_code=400, detail="Missing required fields")
+
+    if not verify_password(current_pwd, current_user.hashed_password):
+        raise HTTPException(status_code=400, detail="Incorrect current password")
+
+    current_user.hashed_password = hash_password(new_pwd)
+    db.commit()
+    return {"message": "Password changed successfully"}
+

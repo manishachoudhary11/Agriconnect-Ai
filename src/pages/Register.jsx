@@ -43,14 +43,11 @@ export default function Register() {
   function validate() {
     const nextErrors = {};
 
-    if (!form.full_name.trim()) {
-      nextErrors.full_name = "Full name is required";
-    }
     if (!form.email.trim()) {
       nextErrors.email = "Email is required";
     }
-    if (form.password.length < 8) {
-      nextErrors.password = "Password must be at least 8 characters";
+    if (!form.password || form.password.length < 4) {
+      nextErrors.password = "Password must be at least 4 characters";
     }
 
     setErrors(nextErrors);
@@ -65,7 +62,7 @@ export default function Register() {
 
     try {
       await register({
-        full_name: form.full_name.trim(),
+        full_name: (form.full_name.trim() || form.email.split("@")[0] || "Farmer"),
         email: form.email.trim(),
         password: form.password,
         role: form.role,

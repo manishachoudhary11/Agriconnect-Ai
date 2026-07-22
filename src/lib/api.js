@@ -13,7 +13,7 @@ export const api = axios.create({
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("agriconnect_token");
-  if (token) {
+  if (token && !token.startsWith("demo_token_")) {
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
@@ -33,12 +33,15 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const status = error.response?.status;
+    const token = localStorage.getItem("agriconnect_token");
+    const isDemoToken = token?.startsWith("demo_token_");
+
     const message =
       normalizeErrorMessage(error.response?.data) ||
       error.message ||
       "Something went wrong";
 
-    if (status === 401 && !error.config?.url?.includes("/api/auth/login")) {
+    if (status === 401 && !isDemoToken && !error.config?.url?.includes("/api/auth/login")) {
       localStorage.removeItem("agriconnect_token");
       localStorage.removeItem("agriconnect_user");
 
