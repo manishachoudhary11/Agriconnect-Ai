@@ -1,38 +1,28 @@
 # 🌾 AgriConnect AI
 
-<div align="center">
-
-### 🚀 AI-Powered Smart Agriculture Platform
-
-A modern full-stack web application that empowers farmers and buyers through AI-driven crop management, marketplace services, analytics, and intelligent farming assistance.
-
-**Built with React, FastAPI, PostgreSQL, and JWT Authentication**
+> **An AI-powered Smart Agriculture Platform built with React, FastAPI, PostgreSQL, and Artificial Intelligence to help farmers make data-driven decisions through crop management, disease detection, weather intelligence, price prediction, and an online marketplace.**
 
 ---
 
-![React](https://img.shields.io/badge/React-18-blue?logo=react)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green?logo=fastapi)
-![Python](https://img.shields.io/badge/Python-3.11-yellow?logo=python)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?logo=postgresql)
-![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-Styling-38B2AC?logo=tailwind-css)
-![JWT](https://img.shields.io/badge/Auth-JWT-orange)
-![Status](https://img.shields.io/badge/Status-Under_Development-success)
+## 🚀 Overview
 
-</div>
+AgriConnect AI is a modern full-stack web application that connects farmers and buyers through an intelligent agriculture ecosystem.
 
----
+The platform enables users to:
 
-# 📖 About
+- 🌾 Manage crop inventory
+- 🤖 Get AI-powered farming assistance
+- 🌿 Detect crop diseases from images
+- 🌦 Monitor real-time weather conditions
+- 📈 Analyze crop price trends
+- 🛒 Buy and sell agricultural products
+- 📊 Track farm analytics using interactive dashboards
 
-AgriConnect AI is a production-oriented agriculture platform designed to bridge the gap between farmers and buyers using Artificial Intelligence.
-
-The application helps users manage crops, monitor agricultural data, analyze market trends, and leverage AI-powered insights for better farming decisions.
-
-This project is being developed following modern software engineering principles, scalable architecture, and clean coding practices.
+The project follows modern software engineering principles with a scalable architecture and production-ready technologies.
 
 ---
 
-# ✨ Current Features
+# ✨ Features
 
 ## 🔐 Authentication
 
@@ -41,63 +31,124 @@ This project is being developed following modern software engineering principles
 - JWT Authentication
 - Password Hashing
 - Protected Routes
-- User Roles
-- Logout
+- Session Management
 
 ---
 
-## 🌾 Crop Management API
+## 🎨 Modern Landing Page
 
-- Create Crop
-- View All Crops
-- View Single Crop
-- Update Crop
-- Delete Crop
-- Search Crops
-
----
-
-## 🎨 Frontend
-
-- Premium Responsive Landing Page
-- Modern Hero Section
-- Responsive Navbar
-- Responsive Footer
+- Premium Hero Section
+- Gradient Background
+- Feature Cards
+- Statistics Section
+- Responsive Design
 - Dark / Light Theme
-- Dashboard
-- About Page
-- Login & Register UI
-- Reusable UI Components
-- Component Library
+- Mobile Friendly UI
 
 ---
 
-## ⚙️ Backend
+## 📊 Dashboard
 
-- FastAPI
-- SQLAlchemy ORM
-- PostgreSQL (Supabase)
-- JWT Authentication
-- Environment Configuration
-- RESTful APIs
-- CORS Support
+- Interactive Analytics Cards
+- Crop Statistics
+- Production Metrics
+- Health Index
+- Weather Widget
+- AI Insights
+- Activity Timeline
+- Recharts Visualizations
 
 ---
 
-# 🚀 Upcoming Features
+## 🌾 Crop Management
 
-- 🤖 AI Chat Assistant
-- 🌿 Disease Detection using Image Upload
-- 🌦 Weather Intelligence
-- 📈 Crop Price Prediction
-- 🛒 Marketplace for Farmers & Buyers
-- 📊 Interactive Analytics Dashboard
-- 👤 User Profile Management
-- 🔔 Notifications
-- 🐳 Docker Support
-- ☁️ Deployment
-- 🔄 CI/CD Pipeline
-- 🧪 Automated Testing
+- Add Crops
+- Edit Crops
+- Delete Crops
+- Search Crops
+- Category Filters
+- Status Filters
+- Pagination
+- Crop Image Upload
+
+---
+
+## 🛒 Marketplace
+
+- Farmer Listings
+- Buyer Marketplace
+- Search & Filters
+- Product Categories
+- Order Inquiry
+- Listing Management
+
+---
+
+## 🤖 AI Farming Assistant
+
+- Chat-based AI Assistant
+- Agricultural Recommendations
+- Fertilizer Suggestions
+- Disease Guidance
+- Weather Advice
+- Market Insights
+- Conversation Interface
+
+---
+
+## 🌿 Disease Detection
+
+- Upload Crop Images
+- Disease Identification
+- Confidence Score
+- Disease Description
+- Organic Treatment
+- Chemical Treatment
+- Prevention Tips
+
+---
+
+## 🌦 Weather Intelligence
+
+- Live Weather Data
+- Temperature
+- Humidity
+- Wind Speed
+- Weekly Forecast
+- Weather Alerts
+- AI Farming Recommendations
+
+---
+
+## 📈 Price Prediction
+
+- Historical Crop Prices
+- Price Trend Charts
+- Predicted Prices
+- Confidence Score
+- Market Insights
+- Hold / Sell Recommendations
+
+---
+
+## 👤 User Profile
+
+- Profile Management
+- Avatar Upload
+- Change Password
+- Notification Preferences
+- Account Settings
+
+---
+
+## 🔔 Notifications
+
+- Weather Alerts
+- Marketplace Alerts
+- Crop Alerts
+- AI Notifications
+- Mark as Read
+- Notification Center
 
 ---
 
@@ -110,16 +161,21 @@ This project is being developed following modern software engineering principles
 - Tailwind CSS
 - React Router DOM
 - Axios
-- Context API
+- Recharts
+- React Icons
+
+---
 
 ## Backend
 
 - Python
 - FastAPI
 - SQLAlchemy
+- Pydantic
 - Uvicorn
-- Passlib
-- Python-Jose
+- JWT Authentication
+
+---
 
 ## Database
 
@@ -128,35 +184,88 @@ This project is being developed following modern software engineering principles
 
 ---
 
+## AI & APIs
+
+- Gemini API
+- Weather API
+- Image Upload Support
+
+---
+
+## DevOps
+
+- Docker
+- Docker Compose
+- GitHub Actions
+- CI/CD
+- Vercel
+- Render
+
+---
+
 # 📂 Project Structure
 
-```
+```text
 AgriConnectAI
+│
+├── .github
+│   └── workflows
 │
 ├── backend
 │   ├── core
 │   ├── routers
+│   ├── services
+│   ├── tests
 │   ├── database.py
 │   ├── models.py
 │   ├── schemas.py
 │   ├── config.py
 │   ├── main.py
 │   ├── requirements.txt
+│   ├── Dockerfile
 │   └── .env.example
+│
+├── public
 │
 ├── src
 │   ├── components
-│   ├── context
 │   ├── pages
 │   ├── providers
+│   ├── context
 │   ├── services
 │   ├── App.jsx
 │   └── main.jsx
 │
-├── public
+├── Dockerfile
+├── docker-compose.yml
 ├── package.json
-├── vite.config.js
-└── README.md
+├── README.md
+├── render.yaml
+└── vercel.json
+```
+
+---
+
+# 🏗 System Architecture
+
+```text
+             React Frontend
+                    │
+                    ▼
+            Axios REST API
+                    │
+                    ▼
+            FastAPI Backend
+                    │
+                    ▼
+             SQLAlchemy ORM
+                    │
+                    ▼
+        PostgreSQL (Supabase)
+                    │
+     ┌──────────────┴──────────────┐
+     ▼                             ▼
+ Gemini AI API              Weather API
 ```
 
 ---
@@ -173,7 +282,7 @@ GET  /api/auth/me
 
 ---
 
-## Crop APIs
+## Crop Management
 
 ```
 GET    /api/crops
@@ -181,7 +290,66 @@ GET    /api/crops/{id}
 POST   /api/crops
 PUT    /api/crops/{id}
 DELETE /api/crops/{id}
-GET    /api/crops/search
+```
+
+---
+
+## Dashboard
+
+```
+GET /api/dashboard
+```
+
+---
+
+## Marketplace
+
+```
+GET  /api/marketplace/listings
+POST /api/marketplace/listings
+PUT  /api/marketplace/listings/{id}
+```
+
+---
+
+## AI Assistant
+
+```
+POST /api/ai/chat
+```
+
+---
+
+## Disease Detection
+
+```
+POST /api/disease/predict
+POST /api/disease/upload
+```
+
+---
+
+## Weather
+
+```
+GET /api/weather
+```
+
+---
+
+## Price Prediction
+
+```
+GET /api/price/predict
+```
+
+---
+
+## Notifications
+
+```
+GET /api/notifications
+PUT /api/notifications/{id}/read
 ```
 
 ---
@@ -203,7 +371,7 @@ npm install
 npm run dev
 ```
 
-Runs on
+Runs at:
 
 ```
 http://localhost:5173
@@ -225,13 +393,13 @@ pip install -r requirements.txt
 python -m uvicorn main:app --reload
 ```
 
-Runs on
+Backend:
 
 ```
 http://127.0.0.1:8000
 ```
 
-Swagger Documentation
+Swagger Docs:
 
 ```
 http://127.0.0.1:8000/docs
@@ -241,9 +409,7 @@ http://127.0.0.1:8000/docs
 
 # 🔐 Environment Variables
 
-Create a `.env` file inside the backend directory.
-
-Example:
+Create a `.env` file inside the backend folder.
 
 ```env
 DATABASE_URL=your_database_url
@@ -252,74 +418,125 @@ SECRET_KEY=your_secret_key
 
 ACCESS_TOKEN_EXPIRE_MINUTES=60
 
+GEMINI_API_KEY=your_gemini_api_key
+
+WEATHER_API_KEY=your_weather_api_key
+
 CORS_ORIGINS=http://localhost:5173
 ```
 
-> **Never commit your real `.env` file to GitHub.**
+> Never commit your actual `.env` file.
 
 ---
 
-# 🏗 Architecture
+# 🐳 Docker
 
-```
-React Frontend
-        │
-        ▼
-Axios API Calls
-        │
-        ▼
-FastAPI Backend
-        │
-        ▼
-SQLAlchemy ORM
-        │
-        ▼
-PostgreSQL (Supabase)
+Run the application using Docker.
+
+```bash
+docker-compose up --build
 ```
 
 ---
 
-# 📈 Project Roadmap
+# 🧪 Testing
 
-- ✅ Backend Development
-- ✅ Authentication
-- ✅ Crop CRUD APIs
-- ✅ Premium Landing Page
-- 🚧 Dashboard Improvements
-- ⏳ Marketplace
-- ⏳ AI Assistant
-- ⏳ Disease Detection
-- ⏳ Weather Intelligence
-- ⏳ Price Prediction
-- ⏳ Docker
-- ⏳ CI/CD
-- ⏳ Deployment
+### Backend
+
+```bash
+pytest
+```
+
+### Frontend
+
+```bash
+npm run build
+```
+
+---
+
+# 🔄 Continuous Integration
+
+GitHub Actions automatically:
+
+- Install project dependencies
+- Build the frontend
+- Execute backend tests
+- Validate application before merging
+
+---
+
+# 🚀 Deployment
+
+### Frontend
+
+- Vercel
+
+### Backend
+
+- Render
+
+### Database
+
+- Supabase PostgreSQL
 
 ---
 
 # 📸 Screenshots
 
-Coming Soon
+Add screenshots after deployment.
 
 - Landing Page
 - Dashboard
-- Authentication
+- Crop Management
 - Marketplace
 - AI Assistant
+- Disease Detection
+- Weather Intelligence
+- Price Prediction
 
 ---
 
-# 🤝 Contributing
+# 🗺 Roadmap
 
-Contributions, suggestions, and improvements are welcome.
+### ✅ Completed
 
-Feel free to fork the repository and submit a Pull Request.
+- Authentication
+- Landing Page
+- Dashboard
+- Crop Management
+- Marketplace
+- AI Assistant
+- Disease Detection
+- Weather Intelligence
+- Price Prediction
+- User Profile
+- Notifications
+- Docker
+- GitHub Actions
+- Responsive UI
+
+### 🔜 Future Improvements
+
+- IoT Sensor Integration
+- Satellite Crop Monitoring
+- Mobile Application
+- Voice-Based AI Assistant
+- Multi-language Support
+- Government Scheme Recommendations
+
+---
+
+# 👩‍💻 Author
+
+**Manisha Choudhary**
+
+B.Tech Computer Science Engineering
+
+AI-Assisted Full Stack Web Development Project
 
 ---
 
 # 📄 License
 
-This project is developed for learning, portfolio, and educational purposes.
-
----
-
+This project is developed for educational, learning, internship, and portfolio purposes.
