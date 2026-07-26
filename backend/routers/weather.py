@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
-from core.deps import get_current_user, get_db
+from core.deps import get_current_user_optional, get_db
 from models import User
 from services.ai_service import generate_weather_advice
 from services.weather_service import get_weather
@@ -13,9 +13,9 @@ router = APIRouter(prefix="/api/weather", tags=["weather"])
 async def get_weather_intelligence(
     location: str = Query(default="Nashik"),
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
+    current_user: User | None = Depends(get_current_user_optional),
 ):
-    target_city = location or current_user.location or "Nashik"
+    target_city = location or (current_user.location if current_user else None) or "Nashik"
     weather_data = await get_weather(target_city)
 
     try:

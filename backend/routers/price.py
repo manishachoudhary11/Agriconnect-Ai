@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
-from core.deps import get_current_user, get_db
+from core.deps import get_current_user_optional, get_db
 from models import User
 from services.price_service import get_price_prediction, CROP_PRICES
 
@@ -12,7 +12,7 @@ router = APIRouter(prefix="/api/prices", tags=["prices"])
 def predict_price(
     crop: str = Query(default="wheat"),
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
+    current_user: User | None = Depends(get_current_user_optional),
 ):
     prediction = get_price_prediction(crop)
     return prediction

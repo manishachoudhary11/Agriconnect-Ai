@@ -110,7 +110,29 @@ export default function AIAssistant() {
       let responseText = "";
       const lower = query.toLowerCase();
 
-      if (lower.includes("soil") || lower.includes("clay") || lower.includes("rabi")) {
+      const isPriceQuery = lower.includes("price") || lower.includes("market") || lower.includes("trend") || lower.includes("sell") || lower.includes("mandi") || lower.includes("cost") || lower.includes("rate");
+      const isWeatherQuery = lower.includes("weather") || lower.includes("wether") || lower.includes("rain") || lower.includes("temperature") || lower.includes("climate") || lower.includes("grow") || lower.includes("farming") || lower.includes("season");
+
+      if (lower.includes("wheat") && isWeatherQuery && !isPriceQuery) {
+        responseText = `### 🌾 Optimal Weather & Climate for Wheat Farming
+1. **Best Season & Climate**: Cool and dry climate. Wheat is a premier **Rabi season (Winter / October to March)** crop.
+2. **Optimal Temperature**: Cool temperatures during vegetative growth (**10°C to 15°C**) and warm, bright sunshine during grain ripening (**21°C to 26°C**). Avoid extreme frost during flowering.
+3. **Irrigation & Water**: Requires **75–100 cm annual rainfall** or 4–6 critical irrigations. The most vital stage is **Crown Root Initiation (CRI)** at 21 days after sowing.
+4. **Soil Requirement**: Well-drained fertile clay-loam or loamy soils with pH between 6.0 and 7.5.`;
+      } else if (lower.includes("rice") && isWeatherQuery && !isPriceQuery) {
+        responseText = `### 🌾 Optimal Weather & Climate for Rice Farming
+1. **Best Season & Climate**: Warm and humid climate with abundant water. The **Kharif season (Monsoon / June to November)** is the best time for rice cultivation.
+2. **Optimal Temperature**: 20°C to 38°C (Ideal growth temperature is **25°C – 32°C**). High sunshine during ripening produces the highest grain yields.
+3. **Rainfall & Moisture**: Requires **100–150 cm of rainfall** or steady irrigation. Standing water (2–5 cm depth) is necessary during transplanting and tillering.
+4. **Soil Requirement**: Heavy clay or clay-loam soil with strong water retention properties.`;
+      } else if (isWeatherQuery && !isPriceQuery) {
+        responseText = `### 🌤️ Weather & Crop Growth Advisory
+1. **Optimal Temperature Range**: Most agricultural crops thrive between **15°C and 32°C**.
+2. **Seasonal Cultivation Guide**:
+   - **Kharif (Monsoon / June–Nov)**: Best for water-intensive crops like Rice, Cotton, Maize, and Soybean.
+   - **Rabi (Winter / Oct–March)**: Best for cool-season crops like Wheat, Mustard, Chickpea (Gram), and Barley.
+3. **Water & Spray Management**: Avoid chemical spraying during windy (>15 km/h) or rainy conditions. Irrigate early morning for optimal root absorption.`;
+      } else if (lower.includes("soil") || lower.includes("clay") || lower.includes("rabi")) {
         responseText = `### 🌾 AgriConnect AI Recommendation for Soil & Rabi Crops
 1. **Best Crops for Clay Soil**: Wheat (HD-2967, PBW-550), Mustard, Chickpea (Gram), and Barley.
 2. **Soil Management**: Clay soil retains moisture well but needs aeration. Add organic compost or farmyard manure before sowing.
@@ -125,7 +147,7 @@ export default function AIAssistant() {
 1. **High Humidity (>60%)**: Evapotranspiration slows down. Reduce watering frequency by **15-20%** to avoid root rot.
 2. **Optimal Schedule**: Irrigate early morning (6:00 AM - 8:30 AM) to maximize soil absorption and prevent fungal growth.
 3. **Drip Irrigation**: Recommended rate of **4 Liters/Hour per emitter** for optimal root hydration.`;
-      } else if (lower.includes("price") || lower.includes("market") || lower.includes("trend") || lower.includes("rice") || lower.includes("wheat")) {
+      } else if (isPriceQuery) {
         responseText = `### 📈 AI Market Outlook & Price Forecast
 1. **Wheat**: Expected to appreciate **+4.5%** over the next 15 days due to steady regional procurement. Target price: ₹2,350/Q.
 2. **Rice (Basmati)**: High export demand. Market price holding strong at ₹3,400 - ₹3,600/Q.

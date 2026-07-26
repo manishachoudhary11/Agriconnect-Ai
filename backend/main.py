@@ -4,11 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from config import CORS_ORIGINS
-from database import engine
+from database import engine, run_migrations
 from models import Base
 from routers import ai, auth, crops, dashboard, disease, marketplace, notifications, price, weather
 
-Base.metadata.create_all(bind=engine)
+run_migrations()
 
 app = FastAPI(
     title="AgriConnect AI API",

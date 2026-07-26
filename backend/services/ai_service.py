@@ -60,6 +60,38 @@ async def _gemini_chat(messages: list[dict]) -> str:
 def _mock_response(messages: list[dict]) -> str:
     last = messages[-1]["content"].lower() if messages else ""
 
+    if "wheat" in last:
+        if any(k in last for k in ["weather", "wether", "climate", "grow", "farming", "season", "water", "temperature"]):
+            return (
+                "**🌾 Optimal Weather & Conditions for Wheat Farming**\n\n"
+                "1. **Best Season & Climate:** Cool and dry climate. Wheat is a **Rabi season (Winter / October to March)** crop.\n"
+                "2. **Optimal Temperature:** 10°C to 15°C during vegetative growth; 21°C to 26°C during ripening.\n"
+                "3. **Water Requirements:** 75–100 cm rainfall or 4–6 timely irrigations (CRI stage at 21 days is vital).\n"
+                "4. **Soil Type:** Well-drained fertile clay-loam or loamy soils."
+            )
+        if any(k in last for k in ["price", "market", "sell", "mandi", "cost", "trend"]):
+            return (
+                "**🌾 Wheat Market Outlook & Pricing**\n\n"
+                "- Wheat prices expected to appreciate +4.5% over the next 15 days.\n"
+                "- Target Mandi Price: ₹2,350/Q.\n"
+                "- Seller Tip: Hold 30% of inventory for peak season pricing in late Rabi."
+            )
+    if "rice" in last:
+        if any(k in last for k in ["weather", "wether", "climate", "grow", "farming", "season", "water", "temperature"]):
+            return (
+                "**🌾 Optimal Weather & Conditions for Rice Farming**\n\n"
+                "1. **Best Season & Climate:** Warm and humid climate with abundant rainfall/water. The **Kharif season (Monsoon / June to November)** is ideal.\n"
+                "2. **Optimal Temperature:** 20°C to 38°C (Ideal temperature: **25°C – 32°C**).\n"
+                "3. **Rainfall & Water:** High water requirement (100–150 cm rainfall). Rice needs 2–5 cm of standing water during initial growth stages.\n"
+                "4. **Soil Type:** Heavy clay or clay-loam soil with good water retention capacity."
+            )
+        if any(k in last for k in ["price", "market", "sell", "mandi", "cost", "trend"]):
+            return (
+                "**🌾 Rice Market Outlook & Pricing**\n\n"
+                "- Rice (Basmati): High export demand. Market price holding strong at ₹3,400 - ₹3,600/Q.\n"
+                "- Non-basmati varieties: Stable demand at ₹2,100 - ₹2,400/Q.\n"
+                "- Seller Tip: Consider holding 30% of inventory for peak season pricing."
+            )
     if "disease" in last or "spot" in last or "blight" in last:
         return (
             "**Disease Treatment Advice**\n\n"
