@@ -1,10 +1,3 @@
-databases:
-  - name: agriconnect-db
-    databaseName: agriconnect_db
-    user: agriconnect
-    plan: free
-    region: oregon
-
 services:
   - type: web
     name: agriconnect-backend
@@ -17,9 +10,7 @@ services:
     healthCheckPath: /
     envVars:
       - key: DATABASE_URL
-        fromDatabase:
-          name: agriconnect-db
-          property: connectionString
+        sync: false
       - key: SECRET_KEY
         generateValue: true
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
@@ -30,7 +21,5 @@ services:
         value: "gemini"
       - key: GEMINI_API_KEY
         sync: false
-      - key: OPENWEATHER_API_KEY
-        sync: false
       - key: CORS_ORIGINS
-        sync: false
+        value: "*"
