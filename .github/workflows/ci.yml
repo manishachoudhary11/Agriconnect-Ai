@@ -26,8 +26,13 @@ jobs:
           pip install -r backend/requirements.txt
 
       - name: Run Pytest
+        working-directory: backend
         run: |
-          pytest backend/tests
+          pytest tests
+        env:
+          PYTHONPATH: .
+          DATABASE_URL: sqlite:///./test_agriconnect.db
+          SECRET_KEY: test_secret_key_ci_only
 
   frontend-build:
     name: Frontend Lint & Build
@@ -43,7 +48,7 @@ jobs:
           cache: 'npm'
 
       - name: Install Node Dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build React App
         run: npm run build
