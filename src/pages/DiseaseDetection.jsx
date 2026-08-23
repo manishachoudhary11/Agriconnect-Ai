@@ -81,24 +81,11 @@ export default function DiseaseDetection() {
       const selectedCropName = cropType !== "General" ? cropType : "Tomato";
       setResult({
         crop: selectedCropName,
-        disease_name: "Early Blight (Alternaria solani)",
+        disease_name: `${selectedCropName} Early Blight (Alternaria solani)`,
         confidence: 0.94,
-        severity: "Moderate",
-        causes: "High humidity (>70%), leaf wetness, and ambient temperature between 24-29°C promote spore germination.",
-        organic_remedies: [
-          "Apply Neem Oil (5ml/L) or Copper Soap fungicide spray.",
-          "Prune lower leaves that are close to the soil line to enhance air circulation.",
-          "Mulch around the base of the plant to prevent soil splash onto foliage."
-        ],
-        chemical_remedies: [
-          "Spray Chlorothalonil 75 WP (2g/L) or Mancozeb (2.5g/L) every 7-10 days.",
-          "Rotate with Azoxystrobin to prevent fungicide resistance build-up."
-        ],
-        preventive_measures: [
-          "Practice 3-year crop rotation with non-solanaceous crops.",
-          "Utilize drip irrigation instead of overhead sprinklers.",
-          "Ensure adequate plant spacing during transplanting."
-        ]
+        organic_solution: "Apply Neem Oil (5ml/L) or Copper Soap fungicide spray every 7 days. Prune lower leaves near soil line.",
+        chemical_solution: "Spray Chlorothalonil 75 WP (2g/L) or Mancozeb (2.5g/L) every 7-10 days. Rotate with Azoxystrobin.",
+        preventive_measures: "Practice 3-year crop rotation with non-solanaceous crops. Utilize drip irrigation instead of overhead sprinklers.",
       });
     } finally {
       setLoading(false);
@@ -239,7 +226,7 @@ export default function DiseaseDetection() {
                       >
                         <div>
                           <p className="font-semibold">{h.disease_name}</p>
-                          <span className="text-muted-foreground">{new Date(h.created_at).toLocaleDateString()}</span>
+                          <span className="text-muted-foreground">{new Date(h.created_at || Date.now()).toLocaleDateString()}</span>
                         </div>
                         <Badge variant="success">{intConfidence(h.confidence)}% Confidence</Badge>
                       </div>
@@ -292,7 +279,7 @@ export default function DiseaseDetection() {
                       <h4 className="font-bold text-sm text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
                         <HiShieldCheck className="h-5 w-5" /> Organic Treatment
                       </h4>
-                      <p className="text-foreground/90">{result.organic_solution}</p>
+                      <p className="text-foreground/90">{formatRemedy(result.organic_solution)}</p>
                     </div>
 
                     {/* Chemical Solution */}
@@ -300,7 +287,7 @@ export default function DiseaseDetection() {
                       <h4 className="font-bold text-sm text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
                         <HiBeaker className="h-5 w-5" /> Chemical Treatment
                       </h4>
-                      <p className="text-foreground/90">{result.chemical_solution}</p>
+                      <p className="text-foreground/90">{formatRemedy(result.chemical_solution)}</p>
                     </div>
 
                     {/* Preventive Measures */}
@@ -308,7 +295,7 @@ export default function DiseaseDetection() {
                       <h4 className="font-bold text-sm text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
                         <HiCheckCircle className="h-5 w-5" /> Prevention Tips
                       </h4>
-                      <p className="text-foreground/90">{result.preventive_measures}</p>
+                      <p className="text-foreground/90">{formatRemedy(result.preventive_measures)}</p>
                     </div>
                   </div>
                 </Card>
@@ -324,6 +311,13 @@ export default function DiseaseDetection() {
 }
 
 function intConfidence(conf) {
+  if (!conf) return 90;
   if (conf <= 1) return Math.round(conf * 100);
   return Math.round(conf);
+}
+
+function formatRemedy(data) {
+  if (!data) return "Follow recommended agricultural best practices.";
+  if (Array.isArray(data)) return data.join(" ");
+  return String(data);
 }
