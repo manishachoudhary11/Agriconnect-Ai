@@ -314,17 +314,7 @@ npm run build
 3. **External API Dependence**: AI conversation and live microclimate data depend on third-party availability (Google Gemini and OpenWeatherMap APIs), falling back to offline knowledge baselines when API quotas or keys are unavailable.
 4. **Render Free Tier Spin-Down**: The free-tier backend hosted on Render may experience a cold-start delay (~30–50 seconds) if inactive for more than 15 minutes.
 
----
 
-## 🔮 Future Improvements
-
-- [ ] Train and integrate a custom PyTorch/TensorFlow vision model (e.g., EfficientNet or ResNet-50) on the PlantVillage dataset for leaf disease classification.
-- [ ] Implement time-series forecasting models (ARIMA / Prophet / LSTM) trained on official Indian government mandi datasets (data.gov.in).
-- [ ] Build a Retrieval-Augmented Generation (RAG) pipeline using ChromaDB/pgvector to ground Gemini AI responses in validated agricultural extension manuals and government scheme guidelines.
-- [ ] Add multilingual support (Hindi, Marathi, Punjabi, Tamil) to make the interface accessible to non-English-speaking regional farmers.
-- [ ] Integrate SMS / WhatsApp notifications via Twilio for severe weather and mandi price alerts.
-
----
 
 ## 👨‍💻 Author
 
