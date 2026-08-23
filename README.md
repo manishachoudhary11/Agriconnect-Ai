@@ -1,6 +1,8 @@
 # 🌾 AgriConnect AI
 
-AgriConnect AI is a full-stack web application designed to assist farmers and agricultural buyers with farm management, market connectivity, and data-driven decision-making. The platform integrates crop lifecycle tracking, a B2B marketplace, an AI chat assistant powered by the Google Gemini API, live microclimate weather advisories via the OpenWeatherMap API, plant disease diagnostic guidelines, and mandi price trend analysis.
+### AI-Powered Smart Agriculture Platform
+
+AgriConnect AI is a full-stack agricultural platform that combines crop management, AI-assisted agricultural guidance, plant disease detection, weather intelligence, and market-price analysis to help farmers make data-driven decisions.
 
 ---
 
