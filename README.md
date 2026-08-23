@@ -15,7 +15,6 @@
 [![Gemini AI](https://img.shields.io/badge/Gemini_AI-1.5_Flash-8E44AD?logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
 [![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 <p align="center">
   <b>AgriConnect AI 2.0</b> is a production-grade full-stack Smart Agriculture SaaS platform connecting farmers, agronomists, and wholesale buyers. Powered by <b>Google Gemini 1.5 Flash</b>, <b>OpenWeather microclimate intelligence</b>, and <b>predictive Mandi market analytics</b>, AgriConnect AI transforms agricultural data into profitable farm decisions.
@@ -277,11 +276,6 @@ npm run build
 - 👨‍🌾 **Farmer**: Add & manage crop inventories, list produce on marketplace, access AI diagnostics, monitor weather advisories.
 - 🏢 **Buyer**: Discover wholesale farm produce, filter by location/commodity, submit purchase trade inquiries.
 - 🛡️ **Admin**: Oversee platform activity, manage listings, and audit transactions.
-
----
-
-## 📜 License
-This project is open-source and available under the [MIT License](LICENSE).
 
 ---
 
