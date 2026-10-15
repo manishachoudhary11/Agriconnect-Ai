@@ -2,7 +2,7 @@ import {
   HiCamera,
   HiChartBar,
   HiCloud,
-  HiShoppingCart,
+  HiShoppingBag,
   HiSparkles,
   HiTrendingUp,
 } from "react-icons/hi";
@@ -10,64 +10,80 @@ import { Card } from "../ui";
 
 const features = [
   {
-    icon: HiSparkles,
-    title: "AI Crop Advisor",
-    description:
-      "Get personalized recommendations for crops, fertilizers, harvest timing, and disease treatment.",
-  },
-  {
-    icon: HiCloud,
-    title: "Weather Intelligence",
-    description:
-      "Real-time forecasts, rain alerts, and AI-generated farming advice based on local weather.",
-  },
-  {
-    icon: HiChartBar,
-    title: "Analytics Dashboard",
-    description:
-      "Track production, revenue, sales trends, and marketplace activity with interactive charts.",
-  },
-  {
-    icon: HiShoppingCart,
-    title: "Farmer Marketplace",
-    description:
-      "List crops, connect with verified buyers, and manage orders — no middlemen required.",
-  },
-  {
     icon: HiCamera,
-    title: "Disease Detection",
+    title: "Computer Vision Disease Diagnosis",
+    hindiSubtitle: "रोग निदान एवं उपचार",
     description:
-      "Upload leaf images for instant AI-powered disease identification with treatment plans.",
+      "Instant leaf spot and blight detection from uploaded photos, generating tailored organic neem remedies and chemical fungicides.",
   },
   {
     icon: HiTrendingUp,
-    title: "Price Prediction",
+    title: "Mandi Price Forecasting",
+    hindiSubtitle: "मंडी भाव एवं मूल्य रुझान",
     description:
-      "Historical trends and AI-predicted future prices to help you sell at the right time.",
+      "Daily APMC mandi rates across major commodities with 30-day directional trends and clear Hold Stock or Sell Now signals.",
+  },
+  {
+    icon: HiCloud,
+    title: "Microclimate Weather Intelligence",
+    hindiSubtitle: "मौसम सलाह एवं वर्षा चेतावनी",
+    description:
+      "Live local temperature, humidity, and 7-day agricultural forecasts with automated Gemini AI irrigation and foliar spray windows.",
+  },
+  {
+    icon: HiSparkles,
+    title: "AI Agronomy Chatbot (Gemini)",
+    hindiSubtitle: "24/7 एआई कृषि सलाहकार",
+    description:
+      "Multi-turn conversational assistant answering specific questions regarding soil health, NPK fertilizer ratios, and crop rotation schedules.",
+  },
+  {
+    icon: HiShoppingBag,
+    title: "B2B Produce Marketplace",
+    hindiSubtitle: "सीधा किसान थोक बाज़ार",
+    description:
+      "Direct trading channel enabling farmers to list wholesale lots and verified buyers to place purchase inquiries with zero middlemen cuts.",
+  },
+  {
+    icon: HiChartBar,
+    title: "Crop Lifecycle Management",
+    hindiSubtitle: "मेरी फसल एवं भंडार ट्रैकिंग",
+    description:
+      "End-to-end inventory tracking across growing, harvested, stored, and sold stages with yield statistics and server-side filtering.",
   },
 ];
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Everything you need to farm smarter
+    <section id="features" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 border-b border-border/80">
+      <div className="mx-auto max-w-3xl text-center">
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-accent px-3 py-1 text-xs font-bold text-primary mb-3">
+          <span>🌿 संपूर्ण कृषि समाधान · Comprehensive Agri Capabilities</span>
+        </div>
+        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground">
+          Built for Farmers, Agronomists & Wholesale Buyers
         </h2>
-        <p className="mt-4 text-muted-foreground">
-          From crop health to market prices — one platform combining CropIn, ChatGPT,
-          and marketplace capabilities.
+        <p className="mt-3 text-base text-muted-foreground leading-relaxed">
+          Integrated tools combining data intelligence, machine vision, and market access in one accessible platform.
         </p>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature) => (
-          <Card key={feature.title} className="group">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-primary transition group-hover:scale-105">
-              <feature.icon className="h-5 w-5" />
+          <Card
+            key={feature.title}
+            className="group p-6 rounded-3xl border-border/80 shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1"
+          >
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform group-hover:scale-105 border border-primary/20">
+              <feature.icon className="h-6 w-6" />
             </div>
-            <h3 className="mt-4 text-lg font-semibold">{feature.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            <h3 className="mt-5 text-base font-bold text-foreground group-hover:text-primary transition">
+              {feature.title}
+            </h3>
+            <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mt-0.5">
+              {feature.hindiSubtitle}
+            </p>
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
               {feature.description}
             </p>
           </Card>
