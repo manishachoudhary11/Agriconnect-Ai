@@ -314,7 +314,7 @@ npm run build
 3. **External API Dependence**: AI conversation and live microclimate data depend on third-party availability (Google Gemini and OpenWeatherMap APIs), falling back to offline knowledge baselines when API quotas or keys are unavailable.
 4. **Render Free Tier Spin-Down**: The free-tier backend hosted on Render may experience a cold-start delay (~30–50 seconds) if inactive for more than 15 minutes.
 
-
+---
 
 ## 👨‍💻 Author
 
