@@ -1,5 +1,7 @@
 export { default as HeroSection } from "./HeroSection";
 export { default as StatsSection } from "./StatsSection";
+export { default as ServicesGridSection } from "./ServicesGridSection";
+export { default as InteractiveShowcaseSection } from "./InteractiveShowcaseSection";
 export { default as FeaturesSection } from "./FeaturesSection";
 export { default as HowItWorksSection } from "./HowItWorksSection";
 export { default as AIShowcaseSection } from "./AIShowcaseSection";

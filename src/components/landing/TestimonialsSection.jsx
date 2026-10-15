@@ -1,62 +1,103 @@
 import { Card } from "../ui";
+import { HiShieldCheck, HiStar } from "react-icons/hi";
 
 const testimonials = [
   {
-    name: "Rajesh Patil",
-    role: "Farmer",
-    location: "Nashik, MH",
+    name: "Ramesh Patel",
+    hindiName: "रमेश पटेल",
+    role: "Progressive Wheat & Tomato Farmer",
+    location: "Nashik, Maharashtra",
     quote:
-      "AgriConnect AI helped me detect tomato blight early and connected me with buyers at better prices. My yield increased 20% this season.",
+      "Crop Doctor identified early blight on my tomato crop in seconds. Following the neem oil schedule saved 3 acres of harvest and helped me achieve +22% higher marketable yield this season.",
+    cropTag: "🌾 Wheat & Tomato",
+    stat: "+22% Yield Saved",
     initials: "RP",
   },
   {
-    name: "Priya Sharma",
-    role: "Buyer",
-    location: "Pune, MH",
+    name: "Sardar Gurpreet Singh",
+    hindiName: "सरदार गुरप्रीत सिंह",
+    role: "Basmati Rice Producer",
+    location: "Karnal, Haryana",
     quote:
-      "I source fresh produce directly from farmers. The marketplace is easy to use and the quality listings save me hours every week.",
-    initials: "PS",
+      "Checking Mandi Bhav before loading my tractor trolley earned me ₹160 more per quintal. Connecting directly with export buyers on Kisan Bazaar eliminated commission agent cuts completely.",
+    cropTag: "🌾 Basmati 1121",
+    stat: "₹160/Q Extra Profit",
+    initials: "GS",
   },
   {
-    name: "Amit Kumar",
-    role: "Farmer",
-    location: "Lucknow, UP",
+    name: "Sunita Deshmukh",
+    hindiName: "सुनीता देशमुख",
+    role: "FPO Director & Pomegranate Grower",
+    location: "Solapur, Maharashtra",
     quote:
-      "The AI assistant answers my questions in Hindi-friendly terms. Weather alerts and price predictions have changed how I plan my harvest.",
-    initials: "AK",
+      "Mausam Salah's morning spray alerts helped our 40-member FPO avoid chemical washouts before unseasonal rainfall. The Gemini AI agronomist is now trusted across our entire cluster.",
+    cropTag: "🍎 Pomegranate & Grapes",
+    stat: "15% Cost Reduction",
+    initials: "SD",
   },
 ];
 
 export default function TestimonialsSection() {
   return (
-    <section className="border-y border-border bg-muted/20 py-20">
+    <section className="border-b border-border bg-gradient-to-b from-muted/20 via-background to-muted/20 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Loved by farmers & buyers
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-800 dark:text-emerald-300 mb-3">
+            <span>🤝 किसान अनुभव · Farmer Success Stories</span>
+          </div>
+          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground">
+            Trusted by Farmers Across India's Agricultural Belts
           </h2>
-          <p className="mt-4 text-muted-foreground">
-            See what our community says about farming smarter with AgriConnect AI.
+          <p className="mt-3 text-base text-muted-foreground leading-relaxed">
+            Real outcomes from progressive growers who use AgriConnect AI for disease control, mandi rate tracking, and direct sales.
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
           {testimonials.map((t) => (
-            <Card key={t.name}>
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
-                  {t.initials}
+            <Card
+              key={t.name}
+              className="flex flex-col justify-between p-6 rounded-3xl border-border/80 shadow-md hover:shadow-xl transition-all duration-200"
+            >
+              <div>
+                {/* 5-Star Rating */}
+                <div className="flex items-center gap-1 text-amber-500 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <HiStar key={i} className="h-4 w-4" />
+                  ))}
+                  <span className="ml-2 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md flex items-center gap-1">
+                    <HiShieldCheck className="h-3.5 w-3.5" /> Verified Grower
+                  </span>
                 </div>
-                <div>
-                  <p className="font-semibold">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {t.role} · {t.location}
-                  </p>
+
+                <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground italic">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-border/60 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-800 text-sm font-bold text-white shadow-xs">
+                    {t.initials}
+                  </div>
+                  <div>
+                    <p className="font-extrabold text-sm text-foreground flex items-center gap-1.5">
+                      <span>{t.name}</span>
+                      <span className="text-[11px] font-medium text-muted-foreground">({t.hindiName})</span>
+                    </p>
+                    <p className="text-[11px] font-medium text-muted-foreground">
+                      {t.role} · {t.location}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                &ldquo;{t.quote}&rdquo;
-              </p>
+
+              <div className="mt-3 pt-2 flex items-center justify-between text-[11px] font-bold">
+                <span className="text-muted-foreground">{t.cropTag}</span>
+                <span className="text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">
+                  {t.stat}
+                </span>
+              </div>
             </Card>
           ))}
         </div>

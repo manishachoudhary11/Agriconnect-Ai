@@ -3,6 +3,8 @@ import Footer from "../components/Footer";
 import {
   HeroSection,
   StatsSection,
+  ServicesGridSection,
+  InteractiveShowcaseSection,
   FeaturesSection,
   HowItWorksSection,
   AIShowcaseSection,
@@ -19,6 +21,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <StatsSection />
+        <ServicesGridSection />
+        <InteractiveShowcaseSection />
         <FeaturesSection />
         <HowItWorksSection />
         <AIShowcaseSection />
