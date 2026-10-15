@@ -11,91 +11,79 @@ import {
 
 const services = [
   {
-    title: "Crop Doctor",
-    hindiTitle: "फसल डॉक्टर / रोग निदान",
+    title: "Crop Health Diagnosis",
+    subtitle: "AI Computer Vision Diagnostics",
     description:
-      "Upload or drag leaf photos for instant diagnostic matching. Get step-by-step organic neem solutions and chemical remedies.",
+      "Upload or snap leaf photos for instant diagnostic matching. Receive structured organic neem solutions and chemical remedies.",
     icon: HiCamera,
     link: "/disease-detection",
-    badge: "Instant AI Scan",
-    badgeColor: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300",
-    iconBg: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
-    hoverBorder: "hover:border-emerald-500",
+    badge: "Computer Vision",
+    image: "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=500&q=80",
   },
   {
-    title: "Mandi Bhav",
-    hindiTitle: "मंडी भाव एवं मूल्य पूर्वानुमान",
+    title: "Mandi Price Forecasting",
+    subtitle: "Seasonal Trends & Projections",
     description:
-      "Track daily mandi prices across Wheat, Rice, Cotton, and Onion. 30-day directional forecasts with Hold or Sell signals.",
+      "Track daily mandi prices across Wheat, Rice, Cotton, and Onion. 30-day directional forecasts with Hold Stock or Sell signals.",
     icon: HiTrendingUp,
     link: "/price-prediction",
-    badge: "Live Mandi Rates",
-    badgeColor: "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300",
-    iconBg: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-    hoverBorder: "hover:border-amber-500",
+    badge: "Market Analytics",
+    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=500&q=80",
   },
   {
-    title: "Mausam Salah",
-    hindiTitle: "मौसम सलाह एवं छिड़काव समय",
+    title: "Weather Intelligence",
+    subtitle: "Microclimate & Spray Windows",
     description:
-      "Live microclimate data from OpenWeather. 7-day agricultural forecast with automated Gemini advice for irrigation and spraying.",
+      "Live local temperature, humidity, and 7-day agricultural forecasts with automated Gemini AI irrigation and spraying advice.",
     icon: HiCloud,
     link: "/weather",
-    badge: "7-Day Forecast",
-    badgeColor: "bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300",
-    iconBg: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
-    hoverBorder: "hover:border-sky-500",
+    badge: "OpenWeather API",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80",
   },
   {
-    title: "AI Krishi Salahkar",
-    hindiTitle: "एआई कृषि सलाहकार (24/7)",
+    title: "AI Agronomy Advisor",
+    subtitle: "24/7 Contextual Consultation",
     description:
       "Conversational agronomy assistant powered by Google Gemini. Ask about soil testing, seed varieties, NPK ratios, and crop schedules.",
     icon: HiSparkles,
     link: "/ai-assistant",
-    badge: "Gemini 1.5 AI",
-    badgeColor: "bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300",
-    iconBg: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
-    hoverBorder: "hover:border-purple-500",
+    badge: "Gemini 1.5 Flash",
+    image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=500&q=80",
   },
   {
-    title: "Kisan B2B Bazaar",
-    hindiTitle: "किसान थोक बाज़ार (बिना बिचौलिया)",
+    title: "B2B Produce Marketplace",
+    subtitle: "Direct Wholesale Trading",
     description:
       "Connect directly with wholesale buyers and FPOs. Create listings, calculate live lot values, and arrange sales with zero commissions.",
     icon: HiShoppingBag,
     link: "/marketplace",
     badge: "Zero Middlemen",
-    badgeColor: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300",
-    iconBg: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
-    hoverBorder: "hover:border-emerald-500",
+    image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=500&q=80",
   },
   {
-    title: "Meri Fasal",
-    hindiTitle: "मेरी फसल एवं खेत प्रबंधन",
+    title: "Crop Lifecycle Management",
+    subtitle: "Farm Inventory & Stage Tracking",
     description:
       "Complete farm inventory management. Track crop status (growing, harvested, stored, sold), quantities, and market values.",
     icon: HiClipboardList,
     link: "/crops",
-    badge: "Farm Lifecycle",
-    badgeColor: "bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300",
-    iconBg: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20",
-    hoverBorder: "hover:border-teal-500",
+    badge: "Full CRUD",
+    image: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=500&q=80",
   },
 ];
 
 export default function ServicesGridSection() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 border-b border-border/80">
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 border-b border-border">
       <div className="mx-auto max-w-3xl text-center">
-        <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-accent px-3 py-1 text-xs font-bold text-primary mb-3">
-          <span>🌾 किसान सेवा केंद्र · Kisan Services Hub</span>
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-3">
+          <span>🌿 Core Agricultural Services</span>
         </div>
         <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground">
-          Core Agricultural Tools for India's Farmers
+          Everything You Need to Farm & Trade Smarter
         </h2>
         <p className="mt-3 text-base text-muted-foreground leading-relaxed">
-          Inspired by top platforms like AgroStar and DeHaat — built to solve real daily farming challenges from sowing to mandi trade.
+          From computer vision disease diagnosis to predictive mandi analytics and direct B2B produce trading.
         </p>
       </div>
 
@@ -104,38 +92,44 @@ export default function ServicesGridSection() {
           <Link
             key={item.title}
             to={item.link}
-            className={`group flex flex-col justify-between rounded-3xl border border-border/80 bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${item.hoverBorder}`}
+            className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-emerald-500/50"
           >
-            <div>
-              <div className="flex items-center justify-between">
-                <div
-                  className={`flex h-12 w-12 items-center justify-center rounded-2xl border transition group-hover:scale-105 ${item.iconBg}`}
-                >
-                  <item.icon className="h-6 w-6" />
-                </div>
-                <span
-                  className={`rounded-full px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider ${item.badgeColor}`}
-                >
+            {/* Real Crop / Agriculture Photo Header */}
+            <div className="relative h-44 w-full overflow-hidden bg-slate-900">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+              <div className="absolute top-3 right-3">
+                <span className="rounded-full bg-slate-950/70 backdrop-blur-md border border-slate-700/60 px-3 py-1 text-[10px] font-bold text-white uppercase tracking-wider">
                   {item.badge}
                 </span>
               </div>
-
-              <div className="mt-5">
-                <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition flex items-center justify-between">
-                  <span>{item.title}</span>
-                </h3>
-                <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mt-0.5">
-                  {item.hindiTitle}
-                </p>
-                <p className="mt-2.5 text-xs text-muted-foreground leading-relaxed">
-                  {item.description}
-                </p>
+              <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500 text-slate-950 shadow-md">
+                  <item.icon className="h-5 w-5" />
+                </div>
+                <span className="text-xs font-bold text-white drop-shadow-sm">{item.subtitle}</span>
               </div>
             </div>
 
-            <div className="mt-6 flex items-center gap-1 text-xs font-bold text-primary group-hover:gap-2 transition-all">
-              <span>Open Tool</span>
-              <HiArrowRight className="h-3.5 w-3.5" />
+            {/* Content Body */}
+            <div className="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
+
+              <div className="mt-6 flex items-center gap-1.5 text-xs font-bold text-primary group-hover:gap-2.5 transition-all">
+                <span>Explore Feature</span>
+                <HiArrowRight className="h-3.5 w-3.5" />
+              </div>
             </div>
           </Link>
         ))}

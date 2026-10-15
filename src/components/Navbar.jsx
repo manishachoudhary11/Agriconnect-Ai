@@ -18,10 +18,10 @@ import { Badge } from "./ui";
 const navLinks = [
   { to: "/", label: "Home" },
   { to: "/crops", label: "My Crops" },
-  { to: "/marketplace", label: "Kisan Bazaar", badge: "B2B" },
-  { to: "/disease-detection", label: "Crop Doctor", badge: "AI" },
-  { to: "/price-prediction", label: "Mandi Bhav" },
-  { to: "/weather", label: "Mausam" },
+  { to: "/marketplace", label: "Marketplace", badge: "B2B" },
+  { to: "/disease-detection", label: "Crop Diagnosis", badge: "AI" },
+  { to: "/price-prediction", label: "Price Prediction" },
+  { to: "/weather", label: "Weather" },
   { to: "/ai-assistant", label: "AI Advisor" },
   { to: "/dashboard", label: "Dashboard" },
 ];
@@ -33,10 +33,10 @@ function NavItem({ to, label, badge, onClick }) {
       onClick={onClick}
       className={({ isActive }) =>
         cn(
-          "relative inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide transition-colors py-1 px-1.5 rounded-lg",
+          "relative inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide transition-colors py-1.5 px-2.5 rounded-lg",
           isActive
             ? "text-primary font-bold bg-accent"
-            : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
+            : "text-muted-foreground hover:text-foreground hover:bg-muted/80"
         )
       }
     >
@@ -44,10 +44,10 @@ function NavItem({ to, label, badge, onClick }) {
       {badge && (
         <span
           className={cn(
-            "rounded-md px-1 py-0.2 text-[9px] font-extrabold uppercase tracking-wider",
+            "rounded px-1.5 py-0.2 text-[9px] font-extrabold uppercase tracking-wider",
             badge === "AI"
-              ? "bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300"
-              : "bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300"
+              ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+              : "bg-amber-500/15 text-amber-600 dark:text-amber-400"
           )}
         >
           {badge}
@@ -69,32 +69,28 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-md">
-      {/* Top Kisan Announcement & Helpline Bar */}
-      <div className="bg-[#05512c] text-emerald-50 text-[11px] sm:text-xs py-1.5 px-4 font-medium border-b border-emerald-800/40">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
+      {/* Top Advisory & Helpline Bar */}
+      <div className="bg-slate-900 text-slate-200 text-[11px] sm:text-xs py-1.5 px-4 font-medium border-b border-slate-800">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <div className="flex items-center gap-2.5 overflow-hidden">
-            <span className="inline-flex items-center gap-1 rounded bg-amber-500/20 px-2 py-0.5 font-bold text-amber-300 text-[10px] uppercase tracking-wider shrink-0">
-              🌾 Rabi Season 2026
+            <span className="inline-flex items-center gap-1 rounded bg-emerald-500/20 px-2 py-0.5 font-bold text-emerald-400 text-[10px] uppercase tracking-wider shrink-0">
+              🌾 Live Advisory
             </span>
-            <p className="truncate text-emerald-100/90 hidden sm:inline text-xs">
-              Wheat (HD-2967) & Mustard sowing guidelines live · Real-time Mandi Bhav updated daily
+            <p className="truncate text-slate-300 hidden sm:inline text-xs">
+              Real-time Mandi market rates, microclimate weather tracking, and plant health diagnostics
             </p>
           </div>
-          <div className="flex items-center gap-4 shrink-0 text-emerald-100 text-xs">
+          <div className="flex items-center gap-4 shrink-0 text-slate-300 text-xs">
             <a
               href="tel:18001204040"
               className="inline-flex items-center gap-1.5 font-medium hover:text-white transition"
-              title="Kisan Sahayata Helpline"
+              title="Agricultural Helpline"
             >
-              <HiPhone className="h-3.5 w-3.5 text-amber-400" />
-              <span className="hidden md:inline text-emerald-200">Kisan Helpline:</span>
+              <HiPhone className="h-3.5 w-3.5 text-emerald-400" />
+              <span className="hidden md:inline text-slate-400">Support Helpline:</span>
               <span className="font-bold text-white tracking-wide">1800-120-4040</span>
             </a>
-            <span className="text-emerald-600 hidden sm:inline">|</span>
-            <span className="text-[11px] font-semibold text-emerald-200 hidden sm:inline">
-              🇮🇳 EN · हिन्दी
-            </span>
           </div>
         </div>
       </div>
@@ -105,9 +101,9 @@ export default function Navbar() {
           to="/"
           className="flex items-center gap-2.5 text-lg font-bold tracking-tight text-foreground group shrink-0"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-600 to-[#05512c] text-white shadow-sm shadow-emerald-950/20 group-hover:scale-105 transition">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-sm shadow-emerald-500/20 group-hover:scale-105 transition">
             <svg
-              className="h-6 w-6 text-emerald-100"
+              className="h-6 w-6 text-white"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -131,7 +127,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden items-center gap-1.5 lg:gap-2.5 xl:gap-3 lg:flex">
+        <div className="hidden items-center gap-1 lg:gap-1.5 xl:gap-2 lg:flex">
           {navLinks.map((link) => (
             <NavItem key={link.to} {...link} />
           ))}
@@ -157,7 +153,7 @@ export default function Navbar() {
                 to="/profile"
                 className="flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-1.5 hover:bg-muted transition shadow-sm"
               >
-                <HiUser className="h-4 w-4 text-emerald-600" />
+                <HiUser className="h-4 w-4 text-emerald-500" />
                 <span className="text-xs font-semibold">{user?.full_name}</span>
                 <Badge variant="primary" className="capitalize text-[10px] py-0 px-1.5">
                   {user?.role}
@@ -175,14 +171,14 @@ export default function Navbar() {
                   to="/login"
                   className="inline-flex h-9 items-center rounded-xl border border-border bg-card px-3.5 text-xs font-semibold text-foreground transition hover:bg-muted shadow-sm"
                 >
-                  Kisan Sign In
+                  Sign in
                 </Link>
                 <Link
                   to="/register"
                   className="inline-flex h-9 items-center gap-1 rounded-xl bg-primary px-4 text-xs font-semibold text-primary-foreground shadow-sm transition hover:bg-primary-hover"
                 >
                   <HiSparkles className="h-3.5 w-3.5" />
-                  Join Free
+                  Get Started
                 </Link>
               </div>
             )
@@ -216,7 +212,7 @@ export default function Navbar() {
             {isAuthenticated ? (
               <div className="space-y-3 border-t border-border pt-4 mt-2">
                 <div className="flex items-center gap-2 px-1">
-                  <HiUser className="h-4 w-4 text-emerald-600" />
+                  <HiUser className="h-4 w-4 text-emerald-500" />
                   <span className="text-sm font-semibold">{user?.full_name}</span>
                   <Badge variant="primary" className="capitalize text-xs">
                     {user?.role}
@@ -233,7 +229,7 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="inline-flex h-10 items-center justify-center rounded-xl border border-border px-4 text-sm font-semibold transition hover:bg-muted"
                 >
-                  Kisan Sign In
+                  Sign in
                 </Link>
                 <Link
                   to="/register"
@@ -241,7 +237,7 @@ export default function Navbar() {
                   className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:bg-primary-hover shadow-sm"
                 >
                   <HiSparkles className="h-4 w-4" />
-                  Join as Farmer / Buyer
+                  Get Started Free
                 </Link>
               </div>
             )}

@@ -4,7 +4,6 @@ import { HiShieldCheck, HiStar } from "react-icons/hi";
 const testimonials = [
   {
     name: "Ramesh Patel",
-    hindiName: "रमेश पटेल",
     role: "Progressive Wheat & Tomato Farmer",
     location: "Nashik, Maharashtra",
     quote:
@@ -14,19 +13,17 @@ const testimonials = [
     initials: "RP",
   },
   {
-    name: "Sardar Gurpreet Singh",
-    hindiName: "सरदार गुरप्रीत सिंह",
+    name: "Gurpreet Singh",
     role: "Basmati Rice Producer",
     location: "Karnal, Haryana",
     quote:
-      "Checking Mandi Bhav before loading my tractor trolley earned me ₹160 more per quintal. Connecting directly with export buyers on Kisan Bazaar eliminated commission agent cuts completely.",
+      "Checking Mandi Bhav before loading my tractor trolley earned me ₹160 more per quintal. Connecting directly with export buyers on the marketplace eliminated commission agent cuts completely.",
     cropTag: "🌾 Basmati 1121",
     stat: "₹160/Q Extra Profit",
     initials: "GS",
   },
   {
     name: "Sunita Deshmukh",
-    hindiName: "सुनीता देशमुख",
     role: "FPO Director & Pomegranate Grower",
     location: "Solapur, Maharashtra",
     quote:
@@ -42,11 +39,11 @@ export default function TestimonialsSection() {
     <section className="border-b border-border bg-gradient-to-b from-muted/20 via-background to-muted/20 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-800 dark:text-emerald-300 mb-3">
-            <span>🤝 किसान अनुभव · Farmer Success Stories</span>
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-3">
+            <span>🤝 Farmer Success Stories</span>
           </div>
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground">
-            Trusted by Farmers Across India's Agricultural Belts
+            Trusted by Growers & FPOs Across India
           </h2>
           <p className="mt-3 text-base text-muted-foreground leading-relaxed">
             Real outcomes from progressive growers who use AgriConnect AI for disease control, mandi rate tracking, and direct sales.
@@ -57,7 +54,7 @@ export default function TestimonialsSection() {
           {testimonials.map((t) => (
             <Card
               key={t.name}
-              className="flex flex-col justify-between p-6 rounded-3xl border-border/80 shadow-md hover:shadow-xl transition-all duration-200"
+              className="flex flex-col justify-between p-6 rounded-3xl border-border shadow-md hover:shadow-xl transition-all duration-200"
             >
               <div>
                 {/* 5-Star Rating */}
@@ -75,15 +72,14 @@ export default function TestimonialsSection() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-border/60 flex items-center justify-between">
+              <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-800 text-sm font-bold text-white shadow-xs">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-sm font-bold text-white shadow-xs">
                     {t.initials}
                   </div>
                   <div>
-                    <p className="font-extrabold text-sm text-foreground flex items-center gap-1.5">
-                      <span>{t.name}</span>
-                      <span className="text-[11px] font-medium text-muted-foreground">({t.hindiName})</span>
+                    <p className="font-extrabold text-sm text-foreground">
+                      {t.name}
                     </p>
                     <p className="text-[11px] font-medium text-muted-foreground">
                       {t.role} · {t.location}

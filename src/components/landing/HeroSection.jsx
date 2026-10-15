@@ -8,55 +8,100 @@ import {
   HiShieldCheck,
   HiShoppingBag,
 } from "react-icons/hi";
-import { Badge } from "../ui";
+
+const featuredCrops = [
+  {
+    name: "Wheat (Sharbati)",
+    mandi: "Nashik APMC",
+    price: "₹2,450 / Q",
+    trend: "+4.5%",
+    trendUp: true,
+    signal: "Strong Hold",
+    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    name: "Basmati Rice",
+    mandi: "Karnal APMC",
+    price: "₹3,500 / Q",
+    trend: "+2.8%",
+    trendUp: true,
+    signal: "High Export Demand",
+    image: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    name: "Vine Tomatoes",
+    mandi: "Pune Market",
+    price: "₹1,850 / Q",
+    trend: "-1.2%",
+    trendUp: false,
+    signal: "Optimal Sell",
+    image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    name: "Cotton (Fiber)",
+    mandi: "Rajkot APMC",
+    price: "₹6,800 / Q",
+    trend: "+3.9%",
+    trendUp: true,
+    signal: "Hold Inventory",
+    image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=500&q=80",
+  },
+];
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-accent/40 via-background to-background">
-      {/* Background radial glows */}
+    <section className="relative overflow-hidden border-b border-border min-h-[640px] flex items-center">
+      {/* Background Farm Landscape Image with Rich Dark Gradient Overlay */}
       <div
-        className="absolute -right-24 top-10 h-96 w-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"
-        aria-hidden
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920&q=80')`,
+        }}
       />
+      {/* High-Contrast Gradient Backdrop Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/85 to-slate-900/70" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
+
+      {/* Decorative ambient glow */}
       <div
-        className="absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"
+        className="absolute -right-20 top-20 h-96 w-96 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none"
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24 w-full">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
-          {/* Left Column: Mission, Value Props & Actions */}
-          <div className="animate-slide-up lg:col-span-7">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-600/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-bold text-emerald-800 dark:text-emerald-300 mb-6 shadow-sm">
-              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>भारत का अग्रणी एआई कृषि मंच · India's Smart Agri Platform</span>
+          {/* Left Column: Heading, Value Props & CTAs */}
+          <div className="animate-slide-up lg:col-span-6 text-white">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-3.5 py-1 text-xs font-semibold text-emerald-300 mb-6 backdrop-blur-md">
+              <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>AI-Powered Smart Agriculture Platform</span>
             </div>
 
-            <h1 className="text-balance text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-5xl text-foreground leading-[1.15]">
-              Empowering Annadata with{" "}
-              <span className="text-primary underline decoration-amber-500/60 decoration-wavy decoration-2">
-                AI-Driven Farming
-              </span>
-              , Live Mandi Rates & Direct Trade
+            <h1 className="text-balance text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-5xl leading-[1.15]">
+              Intelligent Farm Care,{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+                Market Analysis
+              </span>{" "}
+              & Direct Crop Trade
             </h1>
 
-            <p className="mt-5 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">
-              From instant leaf disease detection to 30-day mandi price forecasts, microclimate weather advisories, and zero-middleman wholesale trading — everything Indian farmers and buyers need to thrive.
+            <p className="mt-5 max-w-xl text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+              Empowering farmers and buyers with AI-driven crop diagnostics, real-time market price forecasting, microclimate weather advisories, and direct wholesale trade.
             </p>
 
             {/* Trust checkmarks */}
-            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-muted-foreground">
-              <span className="flex items-center gap-1.5 text-foreground">
-                <HiShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                100% Free for Farmers
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-slate-300">
+              <span className="flex items-center gap-1.5 text-white">
+                <HiShieldCheck className="h-4 w-4 text-emerald-400" />
+                Plant Disease Diagnostics
               </span>
-              <span className="flex items-center gap-1.5 text-foreground">
-                <HiShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                Instant Plant Doctor Scan
+              <span className="flex items-center gap-1.5 text-white">
+                <HiShieldCheck className="h-4 w-4 text-emerald-400" />
+                30-Day Mandi Price Forecasts
               </span>
-              <span className="flex items-center gap-1.5 text-foreground">
-                <HiShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                Daily Mandi Bhav Updates
+              <span className="flex items-center gap-1.5 text-white">
+                <HiShieldCheck className="h-4 w-4 text-emerald-400" />
+                Zero-Middleman Marketplace
               </span>
             </div>
 
@@ -64,120 +109,107 @@ export default function HeroSection() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 to="/disease-detection"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-bold text-primary-foreground shadow-md transition hover:bg-primary-hover hover:shadow-lg"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 text-sm font-bold text-slate-950 shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400 hover:scale-[1.02]"
               >
-                <HiCamera className="h-5 w-5 text-amber-300" />
-                Diagnose Crop Free (Crop Doctor)
+                <HiCamera className="h-5 w-5" />
+                Diagnose Crop Health
               </Link>
               <Link
                 to="/price-prediction"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-border bg-card px-5 text-sm font-bold text-foreground transition hover:bg-muted shadow-sm hover:border-emerald-600/40"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900/80 backdrop-blur-md px-5 text-sm font-bold text-white transition hover:bg-slate-800 hover:border-slate-600"
               >
-                <HiTrendingUp className="h-5 w-5 text-emerald-600" />
-                Check Live Mandi Bhav
+                <HiTrendingUp className="h-5 w-5 text-emerald-400" />
+                Live Mandi Prices
               </Link>
               <Link
                 to="/marketplace"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-transparent px-4 text-sm font-semibold text-muted-foreground hover:text-foreground transition"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold text-slate-300 hover:text-white transition"
               >
-                <HiShoppingBag className="h-4 w-4" />
-                Kisan Bazaar
+                <HiShoppingBag className="h-4 w-4 text-emerald-400" />
+                Marketplace
                 <HiArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
 
-          {/* Right Column: Live Agri Telemetry Cockpit (AgroStar / DeHaat Style) */}
-          <div className="animate-fade-in lg:col-span-5">
-            <div className="rounded-3xl border border-border/80 bg-card p-6 shadow-xl shadow-emerald-950/5 relative overflow-hidden">
-              {/* Header */}
-              <div className="flex items-center justify-between border-b border-border/80 pb-4">
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-3 w-3 rounded-full bg-emerald-500 animate-ping" />
-                  <div>
-                    <p className="text-sm font-extrabold text-foreground">Krishi Live Intelligence</p>
-                    <p className="text-xs text-muted-foreground">Nashik APMC & Maharashtra Hub</p>
-                  </div>
+          {/* Right Column: Visual Crop Photo Cards (Rice, Wheat, Tomato, Cotton) */}
+          <div className="animate-fade-in lg:col-span-6">
+            <div className="rounded-3xl border border-slate-800/80 bg-slate-900/85 backdrop-blur-xl p-5 sm:p-6 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                <div>
+                  <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                    <HiTrendingUp className="h-4 w-4 text-emerald-400" />
+                    Live Commodity Market Rates
+                  </h3>
+                  <p className="text-[11px] text-slate-400">APMC Mandi spot prices & directional projections</p>
                 </div>
-                <Badge variant="success" className="text-[10px] uppercase font-bold tracking-wider">
-                  Live Sync
-                </Badge>
+                <Link
+                  to="/price-prediction"
+                  className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1"
+                >
+                  View All <HiArrowRight className="h-3 w-3" />
+                </Link>
               </div>
 
-              {/* Mandi Bhav Ticker Box */}
-              <div className="mt-4 rounded-2xl bg-muted/40 p-3.5 border border-border/60">
-                <div className="flex items-center justify-between text-xs font-bold text-muted-foreground mb-2 px-1">
-                  <span className="flex items-center gap-1 text-emerald-700 dark:text-emerald-400">
-                    <HiTrendingUp className="h-4 w-4" /> Live Mandi Rates (प्रति क्विंटल)
-                  </span>
-                  <Link to="/price-prediction" className="text-primary hover:underline text-[11px]">
-                    View all 50+ mandis →
-                  </Link>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between rounded-xl bg-card p-2.5 text-xs shadow-xs border border-border/40">
-                    <div>
-                      <span className="font-bold text-foreground">Wheat (गेहूं - Sharbati)</span>
-                      <p className="text-[10px] text-muted-foreground">Nashik Mandi · Arrival 450 Q</p>
+              {/* 2x2 Grid of Real Crop Photo Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                {featuredCrops.map((crop) => (
+                  <div
+                    key={crop.name}
+                    className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/70 p-3 transition hover:border-emerald-500/50 hover:shadow-lg"
+                  >
+                    {/* Crop Image Thumbnail */}
+                    <div className="relative h-28 w-full overflow-hidden rounded-xl">
+                      <img
+                        src={crop.image}
+                        alt={crop.name}
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
+                      <div className="absolute top-2 right-2">
+                        <span
+                          className={`rounded-md px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider backdrop-blur-md ${
+                            crop.trendUp
+                              ? "bg-emerald-500/25 text-emerald-300 border border-emerald-500/30"
+                              : "bg-red-500/25 text-red-300 border border-red-500/30"
+                          }`}
+                        >
+                          {crop.trend}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-1.5 left-2">
+                        <span className="text-[10px] font-semibold text-slate-300">{crop.mandi}</span>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <span className="font-extrabold text-foreground">₹2,450/Q</span>
-                      <span className="block text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
-                        ▲ +4.5% (Hold Signal)
-                      </span>
-                    </div>
-                  </div>
 
-                  <div className="flex items-center justify-between rounded-xl bg-card p-2.5 text-xs shadow-xs border border-border/40">
-                    <div>
-                      <span className="font-bold text-foreground">Basmati Rice (चावल)</span>
-                      <p className="text-[10px] text-muted-foreground">Punjab / Haryana Mandi</p>
-                    </div>
-                    <div className="text-right">
-                      <span className="font-extrabold text-foreground">₹3,500/Q</span>
-                      <span className="block text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
-                        ▲ +2.8% (Export Demand)
-                      </span>
+                    {/* Crop Details */}
+                    <div className="mt-2.5 flex items-center justify-between">
+                      <div>
+                        <p className="text-xs font-bold text-white">{crop.name}</p>
+                        <p className="text-sm font-extrabold text-emerald-400 mt-0.5">{crop.price}</p>
+                      </div>
+                      <div className="text-right">
+                        <span className="inline-block rounded-md bg-slate-800/80 px-2 py-0.5 text-[10px] font-medium text-slate-300">
+                          {crop.signal}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
 
-              {/* Weather & Spray Alert + Crop Doctor Snippet */}
-              <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {/* Weather advisory */}
-                <div className="rounded-2xl bg-emerald-500/10 p-3.5 border border-emerald-500/20">
-                  <div className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-300 font-bold text-xs">
-                    <HiCloud className="h-4 w-4" /> Mausam Salah
-                  </div>
-                  <p className="mt-1 text-lg font-black text-foreground">28°C · 62% Hum</p>
-                  <p className="mt-0.5 text-[11px] font-medium text-emerald-800 dark:text-emerald-200">
-                    Foliar spray window: Safe before 11 AM
-                  </p>
-                </div>
-
-                {/* Crop Doctor scan card */}
-                <div className="rounded-2xl bg-amber-500/10 p-3.5 border border-amber-500/20">
-                  <div className="flex items-center gap-1.5 text-amber-800 dark:text-amber-300 font-bold text-xs">
-                    <HiSparkles className="h-4 w-4" /> Crop Doctor
-                  </div>
-                  <p className="mt-1 text-xs font-extrabold text-foreground truncate">
-                    Tomato Early Blight
-                  </p>
-                  <p className="mt-0.5 text-[11px] font-medium text-amber-800 dark:text-amber-200">
-                    Organic Neem Solution · 94% Match
-                  </p>
-                </div>
-              </div>
-
-              {/* Action Banner */}
-              <div className="mt-4 pt-3 border-t border-border/80 flex items-center justify-between text-xs text-muted-foreground">
-                <span>Have an infected leaf photo?</span>
+              {/* Live telemetry footer */}
+              <div className="mt-4 pt-3.5 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                <span className="flex items-center gap-1.5">
+                  <HiCloud className="h-4 w-4 text-emerald-400" />
+                  Nashik: 28°C · Spray Window: Before 11 AM
+                </span>
                 <Link
                   to="/disease-detection"
-                  className="font-bold text-primary hover:underline flex items-center gap-1"
+                  className="font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1"
                 >
-                  Upload & Scan Now <HiArrowRight className="h-3 w-3" />
+                  <HiSparkles className="h-3.5 w-3.5" />
+                  AI Crop Doctor →
                 </Link>
               </div>
             </div>
