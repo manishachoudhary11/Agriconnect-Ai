@@ -17,7 +17,7 @@ import {
   HiClock,
 } from "react-icons/hi";
 import api from "../lib/api";
-import { formatCurrency } from "../lib/utils";
+import { formatCurrency, getCropImage } from "../lib/utils";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useAuth } from "../context/AuthContext";
@@ -376,20 +376,20 @@ export default function Marketplace() {
                     >
                       <div>
                         {/* Image Header */}
-                        <div className="relative h-48 w-full overflow-hidden bg-muted/40">
-                          {item.image_url ? (
-                            <img
-                              src={item.image_url}
-                              alt={item.title}
-                              className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                          ) : (
-                            <div className="flex h-full w-full items-center justify-center bg-emerald-900/10 text-emerald-600 dark:text-emerald-400">
-                              <HiPhotograph className="h-14 w-14 opacity-60" />
-                            </div>
-                          )}
+                        <div className="relative h-48 w-full overflow-hidden bg-slate-900">
+                          <img
+                            src={getCropImage(item.crop_name, item.title, item.image_url)}
+                            alt={item.title}
+                            onError={(e) => {
+                              e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=600&q=80";
+                            }}
+                            className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
                           <div className="absolute top-3 right-3">
-                            <Badge variant="success">{item.crop_name}</Badge>
+                            <Badge variant="success" className="bg-emerald-500/90 text-slate-950 font-bold backdrop-blur-md">
+                              {item.crop_name}
+                            </Badge>
                           </div>
                         </div>
 
@@ -464,18 +464,31 @@ export default function Marketplace() {
               ) : (
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {myListings.map((item) => (
-                    <Card key={item.id} className="p-5 flex flex-col justify-between space-y-4">
+                    <Card key={item.id} className="overflow-hidden p-0 flex flex-col justify-between">
                       <div>
-                        <div className="flex items-start justify-between gap-2">
-                          <h3 className="font-bold text-base">{item.title}</h3>
-                          <Badge variant="success">{item.status}</Badge>
+                        <div className="relative h-40 w-full overflow-hidden bg-slate-900">
+                          <img
+                            src={getCropImage(item.crop_name, item.title, item.image_url)}
+                            alt={item.title}
+                            onError={(e) => {
+                              e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=600&q=80";
+                            }}
+                            className="h-full w-full object-cover"
+                          />
+                          <div className="absolute top-2.5 right-2.5">
+                            <Badge variant="success">{item.status}</Badge>
+                          </div>
                         </div>
-                        <p className="text-xs text-muted-foreground mt-1">Crop: {item.crop_name}</p>
-                        <div className="mt-3 flex items-baseline justify-between">
-                          <p className="text-xl font-bold text-emerald-500">
-                            ₹{item.price_per_unit}/{item.unit}
-                          </p>
-                          <span className="text-xs text-muted-foreground">{item.quantity} {item.unit} available</span>
+
+                        <div className="p-5 space-y-2">
+                          <h3 className="font-bold text-base">{item.title}</h3>
+                          <p className="text-xs text-muted-foreground">Crop: {item.crop_name}</p>
+                          <div className="mt-3 flex items-baseline justify-between border-t border-border pt-3">
+                            <p className="text-xl font-bold text-emerald-500">
+                              ₹{item.price_per_unit}/{item.unit}
+                            </p>
+                            <span className="text-xs text-muted-foreground">{item.quantity} {item.unit} available</span>
+                          </div>
                         </div>
                       </div>
 

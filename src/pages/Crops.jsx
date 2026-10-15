@@ -17,7 +17,7 @@ import {
   HiX,
 } from "react-icons/hi";
 import api from "../lib/api";
-import { formatCurrency } from "../lib/utils";
+import { formatCurrency, getCropImage } from "../lib/utils";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Badge, Card, EmptyState, Loader, Modal, SkeletonCard, Button, Input } from "../components/ui";
@@ -357,21 +357,19 @@ export default function Crops() {
                 >
                   <div>
                     {/* Crop Image Thumbnail */}
-                    <div className="relative h-44 w-full overflow-hidden bg-muted/40">
-                      {crop.image_url ? (
-                        <img
-                          src={crop.image_url}
-                          alt={crop.name}
-                          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-emerald-900/10 text-emerald-600 dark:text-emerald-400">
-                          <HiPhotograph className="h-12 w-12 opacity-60" />
-                        </div>
-                      )}
+                    <div className="relative h-44 w-full overflow-hidden bg-slate-900">
+                      <img
+                        src={getCropImage(crop.name, crop.variety || crop.category, crop.image_url)}
+                        alt={crop.name}
+                        onError={(e) => {
+                          e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=600&q=80";
+                        }}
+                        className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
                       <div className="absolute top-3 right-3">{getStatusBadge(crop.status)}</div>
                       <div className="absolute top-3 left-3">
-                        <Badge variant="primary" className="bg-background/80 backdrop-blur-md">
+                        <Badge variant="primary" className="bg-slate-950/80 text-white font-semibold backdrop-blur-md border border-slate-700/60">
                           {crop.category || "General"}
                         </Badge>
                       </div>
@@ -679,15 +677,16 @@ export default function Crops() {
           title={`Crop Details: ${detailsCrop.name}`}
         >
           <div className="space-y-4">
-            {detailsCrop.image_url && (
-              <div className="h-48 w-full overflow-hidden rounded-xl bg-muted">
-                <img
-                  src={detailsCrop.image_url}
-                  alt={detailsCrop.name}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            )}
+            <div className="h-48 w-full overflow-hidden rounded-xl bg-slate-900">
+              <img
+                src={getCropImage(detailsCrop.name, detailsCrop.category, detailsCrop.image_url)}
+                alt={detailsCrop.name}
+                onError={(e) => {
+                  e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=600&q=80";
+                }}
+                className="h-full w-full object-cover"
+              />
+            </div>
 
             <div className="grid grid-cols-2 gap-4 rounded-xl bg-muted/30 p-4 text-xs">
               <div>
